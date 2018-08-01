@@ -1,1 +1,5 @@
-test file a git gyakorlasraX
+I will practice with this file how to set to staged a file before commit
+Part of the Practice a little more block
+UFF
+Still dont love VIM
+
