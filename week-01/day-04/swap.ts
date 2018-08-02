@@ -10,8 +10,8 @@ a = a ^ b;
 console.log(`value of a: ${a}
 value of b: ${b}`);
 
-let c: number = 123;
-let d: number = 526;
+let c: number = 142;
+let d: number = 666;
 
 //with using a temp variables
 let temp = c;
