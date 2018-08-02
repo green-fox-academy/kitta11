@@ -73,10 +73,32 @@ p.separator {
     padding-left: 10%;
 }
 
+.demosection {
+    padding-right: 10%;
+    padding-left: 10%;
+}
 .wikisection h2 {
     text-align: center;
     font-size: 30px;
 }
+
+.demosection h2 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.demosection h3 {
+    font-family: 'Merriweather', serif;
+    color: #ff0099; 
+    font-size: 26px;
+}
+
+img.demoimage {
+    max-width: 800px;
+    height: auto; 
+    border-image: 5px;
+}
+
 dt {
     font-family: 'Merriweather', serif;
     color: #ff0099;   
@@ -84,4 +106,10 @@ dt {
 }
 dd {
     font-size: 14px;
+}
+
+.keylearning {
+    font-family: 'Merriweather', serif;
+    color: #333333;   
+    font-size: 16px;
 }
