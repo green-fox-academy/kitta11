@@ -12,10 +12,12 @@ let lineCount: number = 4;
 //
 // The triangle should have as many lines as lineCount is
 
-for (let index = 1; index <= lineCount; index++) {
-    let str[index]= new String ('*');
-    
-}
+let stars: string = '*';
+
+for (let indexLine = 1; indexLine <= lineCount; indexLine++) {
+    console.log(stars);
+    stars = stars + '*';
+    }
 
 //does not work in TS    console.log('*'.repeat(count: index));    
 
