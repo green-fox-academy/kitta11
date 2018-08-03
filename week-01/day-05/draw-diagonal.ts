@@ -1,15 +1,6 @@
 'use strict';
 
-let lineDiagonalCount: number = 6;
-
-//NOT READY
-// %%%%%
-// %%  %
-// % % %
-// %  %%
-// %   %
-// %%%%%
-//
+let lineDiagonalCount: number = 16;
 
 let patternOne: string = ' ';
 let patternTwo: string = 'o';
