@@ -13,3 +13,8 @@ for (let index = 0; index < integers.length; index++) {
 
 //using the built in array method
 console.log(integers.toString());
+
+//using forEach
+console.log(integers.forEach(function(element) {console.log(element);
+}));
+
