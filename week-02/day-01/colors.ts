@@ -21,3 +21,8 @@ console.log(colors[2])
 //testing how to address a specific element in the matrix
 console.log(colors[0][3]);
 
+colors[1].push('dark');
+console.log(colors[1]);
+colors[1][4]='superdark';
+console.log(colors[1]);
+
