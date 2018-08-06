@@ -20,7 +20,7 @@ console.log(colors[2])
 
 //testing how to address a specific element in the matrix
 console.log(colors[0][3]);
-
+//testing how to add elements to multidim array
 colors[1].push('dark');
 console.log(colors[1]);
 colors[1][4]='superdark';
