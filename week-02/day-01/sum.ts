@@ -4,8 +4,7 @@ export {};
 // -  The function should return the result
 
 function sum (untilWhenSum: number): number {
-    let total = 0
-    //Q: can I solve this wo setting the initial sum to 0?
+    let total = 0;
     for (let i = 1; i <= untilWhenSum; i++) {
         total = total + i; 
     }
