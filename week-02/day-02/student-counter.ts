@@ -26,14 +26,16 @@ howManyCandies(students);
 // create a function that takes a list of students and logs:
 // - Sum of the age of people who have less than 5 candies
 
-function sumAgeOfCandieOwners (inputArray: object []) {
+function sumAgeOfCandieOwners (inputArrayAge: object []) {
     let sumOfAge: number = 0;
-    for (let counter = 0; counter < inputArray.length; counter++) {
-        if (inputArray[counter]['candies'] < 5) {
-            sumOfAge += inputArray[counter]["age"];
-    } else {}
-    return console.log(`Sum age of student who owns less then 5 candies: ${sumOfAge}`);
+    for (let counterTwo = 0; counterTwo < inputArrayAge.length; counterTwo++) {
+        if (inputArrayAge[counterTwo]["candies"] < 5) {
+            sumOfAge = sumOfAge + inputArrayAge[counterTwo]["age"];
+    } else {
+        sumOfAge = sumOfAge + 0;
+    }
 }
+return console.log(`Sum age of student who owns less then 5 candies: ${sumOfAge}`);
 }
 
 sumAgeOfCandieOwners(students);
