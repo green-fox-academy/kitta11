@@ -13,4 +13,3 @@ function reverse(inputString:string) {
 
 console.log(reverse(reversed));
 
-export = reverse;
