@@ -19,12 +19,16 @@ let numberOfRows: number = Math.floor(Math.random()*10);
 for (let i = 0; i < numberOfRows; i++) {
     matrix[i]=[]
     for (let j = 0; j < numberOfRows; j++) {
-        if (j===i) {
+        if (j===numberOfRows-i-1) {
             matrix[i][j]=1;
         } else {
             matrix[i][j]=0;
         }
     }
 }
+//this was the solution when I first draw a diagonal and then reversed it
+//let reversedMatrix: number [][] = matrix.reverse();
 //Q: how can I save the reversed matrix without creating a new one
-console.log(matrix.reverse());
+//console.log(matrix.reverse());
+console.log(matrix);
+
