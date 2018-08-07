@@ -30,3 +30,9 @@ sampleDestruct[0]=z;
 sampleDestruct[2]=x;
 console.log(sampleDestruct);
 
+let chessTable: boolean [][]=[
+    [true, false, false, true],
+    [false, true, true],
+    [true, false]
+]
+console.log(chessTable);
