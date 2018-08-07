@@ -1,5 +1,5 @@
 'use strict';
-export {};
+export { };
 
 let student = {
     name: 'Helena',
@@ -14,10 +14,10 @@ let classMates = {
     age: 33
 }
 
-function printAge (myObject: object) {
+function printAge(myObject: object) {
     console.log(myObject['age']);
     console.log(Object.keys(myObject));
-    
+
 }
 printAge(student);
 printAge(classMates);

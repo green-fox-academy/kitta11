@@ -36,3 +36,4 @@ let chessTable: boolean [][]=[
     [true, false]
 ]
 console.log(chessTable);
+
