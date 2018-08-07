@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Testing drawing methods</title>
+    <!--meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script-->
+</head>
+
+<body>
+    <canvas id="canvas" style="border: 1px solid; width: 800px; height: 600px">
+        Sorry but your browser does not support canvas however I dont know exactly why
+    </canvas>
+    <script>
+        //Dont get it but serves this purpose: cache a reference to the html element
+        let canvas = document.getElementById("canvas");
+
+        //set the drawing surface dimension to match the canvas
+        canvas.width = canvas.scrollWidth;
+        canvas.height = canvas.scrollHeight;
+
+        //reference to the 2d drawing context, api
+        let ctx = canvas.getContext("2d");
+
+        //first rectangle, which starts 50px x axis and y axis
+        ctx.fillStyle = "green";
+        ctx.fillRect(50, 50, 100, 100);
+
+        //second rectangle which is next to the first one
+        ctx.fillStyle = "red";
+        ctx.fillRect(175, 50, 100, 100);
+
+        //third rectangle with strokestyle
+        ctx.strokeStyle = "blue";
+        ctx.strokeRect(300, 50, 100, 100);
+
+        //first circle
+        ctx.fillStyle = "pink";
+        ctx.beginPath();
+        ctx.arc(475, 100, 50, 0, Math.PI * 2);
+        ctx.fill();
+
+        //second circle
+        ctx.strokeStyle = "pink";
+        ctx.beginPath();
+        ctx.arc(600, 100, 50, 0, Math.PI * 2);
+        ctx.stroke();
+
+        //quarter circle
+        ctx.strokeStyle = "yellow";
+        ctx.beginPath();
+        ctx.arc(725, 100, 50, 0, Math.PI / 2);
+        ctx.lineTo(725, 100)
+        ctx.fill();
+
+
+
+    </script>
+</body>
+
+</html>
