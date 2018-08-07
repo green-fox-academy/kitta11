@@ -8,7 +8,7 @@ let shopItems: any[] = ['Cupcake', 2, 'Brownie', false];
 // Create a function called sweets() which takes the list as a parameter.
 // Expected output: "Cupcake", "Croissant", "Brownie", "Ice cream"
 
-function correction (inputArray: any []) {
+function correction(inputArray: any[]) {
     let newItemOne: string = 'Croissant';
     let newItemTwo: string = 'Ice cream';
     let errorIndexOne: number = inputArray.indexOf(2);
@@ -17,6 +17,19 @@ function correction (inputArray: any []) {
     inputArray.splice(errorIndexTwo, 1, newItemTwo);
     return console.log(inputArray);
 }
-
 correction(shopItems);
+
+//version two
+
+function correctionTwo(inputArray: any[]) {
+    inputArray.forEach(element => {
+        if (element === 2) {
+            inputArray.splice(element - 1, 1, 'Croissant');
+        } else if (element === false) {
+            inputArray.splice(element - 1, 1, 'Ice cream');
+        } else { }
+    });
+    return console.log(inputArray);
+}
+correctionTwo(shopItems);
 
