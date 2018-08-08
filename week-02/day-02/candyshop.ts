@@ -29,7 +29,7 @@ function correctionTwo(inputArray: any[]) {
             inputArray.splice(element - 1, 1, 'Ice cream');
         } else { }
     });
-    return console.log(inputArray);
+    return inputArray;
 }
-correctionTwo(shopItems);
+console.log(correctionTwo(shopItems));
 
