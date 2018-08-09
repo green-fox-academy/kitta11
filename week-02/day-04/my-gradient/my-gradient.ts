@@ -7,39 +7,44 @@ const ctx = canvas.getContext('2d');
 
 const canvasHeight: number = canvas.height;
 const canvasWidth: number = canvas.width;
-const gradWidth: number = 20;
+const gradWidth: number = 10;
 const GradColNo: number = canvasWidth / gradWidth;
 let xIndex: number = 0;
-const alpha: number = 1;
+const alpha: number = 0.8;
 
-let colorLeftRed: number = 100;
-let colorLeftGreen: number = 45;
-let colorLeftBlue: number = 16;
-
-let colorRightRed: number = 36;
-let colorRightGreen: number = 12;
-let colorRightBlue: number = 255;
-
-let redStep: number = (colorRightRed-colorLeftRed)/(GradColNo-2);
-let greenStep: number = (colorRightGreen-colorLeftGreen)/(GradColNo-2);
-let blueStep: number = (colorRightBlue-colorLeftBlue)/(GradColNo-2);
-
+//function to generate rgba string based on dynamically generated r, g, b, a codes
 function colorConcate(r: number, g: number, b: number) {
     let gradColor: string = `rgba(${r}, ${g}, ${b}, ${alpha})`;
     return gradColor
 }
-
-let colorLeft: string = colorConcate(colorLeftRed, colorLeftGreen, colorLeftBlue);
-let colorRight: string = colorConcate(colorRightRed, colorRightGreen, colorRightBlue);
-let gradColor: string = "rgba(180, 200, 220, 1)";
-
+//function to draw a rectangle using x spectrum coordinate and dynamicly changing color
 function drawGradRectangle(xIndex, gradColor) {
     ctx.fillStyle = gradColor;
     ctx.fillRect(xIndex, 0, gradWidth, canvasHeight)
 }
 
+//Setting left side color
+let colorLeftRed: number = 13;
+let colorLeftGreen: number = 58;
+let colorLeftBlue: number = 25;
+let colorLeft: string = colorConcate(colorLeftRed, colorLeftGreen, colorLeftBlue);
+
+//Setting right side color numbers
+let colorRightRed: number = 194;
+let colorRightGreen: number = 121;
+let colorRightBlue: number = 225;
+let colorRight: string = colorConcate(colorRightRed, colorRightGreen, colorRightBlue);
+
+// lets begin to draw, first the left and right side
 drawGradRectangle(xIndex, colorLeft);
 drawGradRectangle(canvasWidth - gradWidth, colorRight);
+
+//calculation of the diff I need to use to define the next col rgb code
+let redStep: number = (colorRightRed-colorLeftRed)/(GradColNo-2);
+let greenStep: number = (colorRightGreen-colorLeftGreen)/(GradColNo-2);
+let blueStep: number = (colorRightBlue-colorLeftBlue)/(GradColNo-2);
+
+//drawing the inner gradients
 for (let xIndex = 1; xIndex < GradColNo - 1; xIndex++) {
     let gradColorRed: number = colorLeftRed+xIndex*redStep;
     let gradColorGreen: number = colorLeftGreen+xIndex*greenStep;

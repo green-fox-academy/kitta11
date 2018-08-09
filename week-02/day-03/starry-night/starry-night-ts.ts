@@ -30,7 +30,7 @@ function starDrawing (xIndex: number, yIndex: number, starSize: number) {
 ctx.fillStyle= "black";
 ctx.rect(0, 0, canvas.width, canvas.height);
 ctx.fill();
-let numberOfStars: number = 100;
+let numberOfStars: number = 150;
 for (let index = 0; index < numberOfStars; index++) {
    let xI: number = Math.floor(Math.random()*canvas.width);
    let yI: number = Math.floor(Math.random()*canvas.height);
