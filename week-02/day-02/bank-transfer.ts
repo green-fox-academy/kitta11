@@ -53,11 +53,11 @@ function transferAmount(inputArray: any[][], fromAccNo: number, toAccNo: number,
 }
 
 //testing the transferamount function
-console.log(accounts[2]);
+console.log(accounts);
 transferAmount(accounts, 43546731, 23456311, 500);
-console.log(accounts[2]);
+console.log(accounts);
 transferAmount(accounts, 43546731, 23456311, 1000);
-console.log(accounts[2]);
+console.log(accounts);
 
 export = {
 getNameAndBalance,
