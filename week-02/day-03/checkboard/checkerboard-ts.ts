@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 // Fill the canvas with a checkerboard pattern.
 
 
-let chessSquareSize: number = 30;
+let chessSquareSize: number = 35;
 let numberOfCol: number = canvas.width / chessSquareSize;
 let numberOfRow: number = canvas.height / chessSquareSize;
 
