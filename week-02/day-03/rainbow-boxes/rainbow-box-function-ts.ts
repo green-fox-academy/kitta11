@@ -9,19 +9,15 @@ const ctx = canvas.getContext('2d');
 // and draws a square of that size and color to the center of the canvas.
 // Create a loop that fills the canvas with rainbow colored squares.
 
-//the function generates a square with a random color
+//the function generates a square with a given color
 function squareDrawTwoParam (squareSize: number, squareColor: string) {
     ctx.fillStyle = squareColor;
     ctx.fillRect((canvas.width-squareSize)/2, (canvas.height-squareSize)/2, squareSize, squareSize);
 }
-//Generates a number which defines the width of a rainbow line
-let rainbowWidth: number = (Math.floor(Math.random()*8))*10;
-//let rainbowWidth: number = 20;
-//calculates based on the rainbow width and the canvas size the number of rainbow squares
-let rainbowColorNumber: number = canvas.height/2/rainbowWidth;
-//draw that many squares as we have based on the rainbowcolornumber
-for (let index = rainbowColorNumber; index > 0; index--) {
-    let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`; 
+let rainbowColorsArray: string []=["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
+let rainbowWidth: number = canvas.height/rainbowColorsArray.length/2;
+for (let index = rainbowColorsArray.length; index > 0; index--) {
+    let color = rainbowColorsArray[index-1];
     squareDrawTwoParam(index*rainbowWidth*2,color);
 }
 
