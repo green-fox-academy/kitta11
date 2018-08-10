@@ -8,7 +8,6 @@ let checkinQuotes: string[][] = [
     ['indiai pasi dupla sebességgel', 'szivárványos arc', 'amikor apit írtam a csempéhez'],
     ['frusztrált vagyok', 'nem vagyok frusztrált']
 ]
-
 function randomCheckIn(inputArray: string[][]) {
     let generatedCheckInText: string = '';
     let randomIdOne: number = Math.floor(Math.random() * inputArray[0].length);
@@ -25,7 +24,6 @@ function randomCheckIn(inputArray: string[][]) {
     return generatedCheckInText;
 }
 
-console.log(randomCheckIn(checkinQuotes));
 console.log(randomCheckIn(checkinQuotes));
 console.log(randomCheckIn(checkinQuotes));
 console.log(randomCheckIn(checkinQuotes));

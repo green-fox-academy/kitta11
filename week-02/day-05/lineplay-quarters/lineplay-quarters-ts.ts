@@ -20,6 +20,7 @@ function drawLine(xStart: number, yStart: number, xEnd: number, yEnd: number, co
 }
 
 //Note: if I set i=0 than I have line in the middle but I need to set i<=div too
+//Note2: check whether I can modify the drawing tech in a way that I need only one for loop with ifs
 
 for (let i = 0; i <= divider; i++) {
     drawLine(halfCanvas - i * distance, halfCanvas, halfCanvas, i * distance, "pink");
