@@ -5,7 +5,7 @@ export {};
 
 function factorio (inputToFactored) {
     let total = 1
-    //Q: can I solve this wo setting the initial sum to 0?
+    //Q: can I solve this wo setting the initial total to 1?
     for (let i = 1; i <= inputToFactored; i++) {
             total = total * i; 
         }
