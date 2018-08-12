@@ -8,16 +8,27 @@ let boys: string[] = ['Joe', 'Fred', 'Tom', 'Todd', 'Neef', 'Jeff'];
 
 function matchMaking(inputArrayOne: string[], inputArrayTwo: string[]) {
     let matchedArray: string[] = [];
-    let matchedIndex: number = 0;
-    let noPairList: string [] = [];
-    for (let index = 0; index < inputArrayTwo.length && index < inputArrayOne.length; index++) {
-        matchedArray[matchedIndex] = inputArrayOne[index];
-        matchedIndex++;
-        matchedArray[matchedIndex] = inputArrayTwo[index];
-        matchedIndex++;
+    let matchedi: number = 0;
+    //let noPairList: string [] = [];
+    for (let i = 0; i < inputArrayTwo.length && i < inputArrayOne.length; i++) {
+        matchedArray[matchedi] = inputArrayOne[i];
+        matchedi++;
+        matchedArray[matchedi] = inputArrayTwo[i];
+        matchedi++;
     }
-    return console.log(`
+    console.log(`
 The pairs: ${matchedArray}`)
-//They dont have pairs: ${noPairList}`);
+    //They dont have pairs: ${noPairList}`);
 }
 matchMaking(girls, boys);
+
+function MatchMakingPush(inputArrayOne: string[], inputArrayTwo: string[]) {
+    let matchedArray: string[] = [];
+    for (let i = 0; i < inputArrayTwo.length && i < inputArrayOne.length; i++) {
+        matchedArray.push(inputArrayOne[i]);
+        matchedArray.push(inputArrayTwo[i]);
+    }
+    console.log(`
+    The pairs: ${matchedArray}`)
+}
+MatchMakingPush(girls, boys);
