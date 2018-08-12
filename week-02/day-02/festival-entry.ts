@@ -13,6 +13,21 @@ const queue: any[] = [
     { name: 'Rob', alcohol: 2, guns: 0 },
     { name: 'Joerg', alcohol: 20, guns: 0 }
 ];
+//Q: is is how we can use splice for multidimensional arrayw
+/*for (let index = 0; index < queue.length; index++) {
+  if (queue[index]["guns"]>0) {
+      queue.splice(index, 1)
+  }  else {}
+}
+console.log(queue);
+*/
+
+//testing filter method
+/*let filteredQueue = queue.filter(function(element){
+    return element['guns']===0;
+})
+console.log(filteredQueue);
+*/
 
 // Queue of festivalgoers at entry
 // no. of alcohol units
