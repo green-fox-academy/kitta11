@@ -1,6 +1,6 @@
 'use strict';
 
-let lineCount2: number = 40;
+let lineCount2: number = 30;
 
 let space1: string = '';
 for (let j = 0; j < Math.floor(lineCount2/2); j++) {
