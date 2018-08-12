@@ -1,6 +1,6 @@
 'use strict';
 
-let shopItems: any[] = ['Cupcake', 2, 'Brownie', false];
+let shopItems: any[] = ['Cupcake', 2, 'Brownie', false, false];
 
 // Accidentally we added "2" and "false" to the array.
 // Your task is to change from "2" to "Croissant" and change from "false" to "Ice cream"
@@ -8,6 +8,7 @@ let shopItems: any[] = ['Cupcake', 2, 'Brownie', false];
 // Create a function called sweets() which takes the list as a parameter.
 // Expected output: "Cupcake", "Croissant", "Brownie", "Ice cream"
 
+// version one works only if I have one element from the given type to be replaced
 function correction(inputArray: any[]) {
     let newItemOne: string = 'Croissant';
     let newItemTwo: string = 'Ice cream';
@@ -15,7 +16,7 @@ function correction(inputArray: any[]) {
     let errorIndexTwo: number = inputArray.indexOf(false);
     inputArray.splice(errorIndexOne, 1, newItemOne);
     inputArray.splice(errorIndexTwo, 1, newItemTwo);
-    return console.log(inputArray);
+    console.log(inputArray);
 }
 correction(shopItems);
 
