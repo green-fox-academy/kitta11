@@ -13,5 +13,9 @@ console.log(numList.reverse());
 
 //console.log(reversedList);
 
-
+let tempArray: number []= [];
+for (let index = 0; index < numList.length; index++) {
+    tempArray.push(numList[index]);
+}
+console.log(tempArray);
 
