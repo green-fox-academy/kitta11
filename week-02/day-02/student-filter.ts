@@ -12,25 +12,37 @@ const students: any[] = [
 // create a function that takes a list of students and logs:
 // - Who has got more candies than 4 candies
 function moreCandiesThanFour(inputArray: object[]) {
-    let haveMoreCandies: string []=[];
+    let haveMoreCandies: string[] = [];
     for (let index = 0; index < inputArray.length; index++) {
-        if (inputArray[index]["candies"] < 4) {
+        if (inputArray[index]["candies"] > 2) {
             haveMoreCandies.push((inputArray[index]["name"]));
         } else { }
     }
-return console.log(`The following students have less than 4 candies: ${haveMoreCandies}`);
+    console.log(`The following students have more than 3 candies: ${haveMoreCandies}`);
 }
 moreCandiesThanFour(students);
+
+
+function candieFilter(inputArray: object[], candyNo: number) {
+    let haveMoreCandies = inputArray.filter(function (element) {
+     return element['candies'] > candyNo;
+    })
+    return haveMoreCandies;
+}
+
+console.log(candieFilter(students, 2));
+
+
 
 // create a function that takes a list of students and logs: 
 //  - how many candies they have on average
 
-function avgCandies (inputArray: object []) {
+function avgCandies(inputArray: object[]) {
     let totalCandies: number = 0;
     for (let index = 0; index < inputArray.length; index++) {
-        totalCandies += inputArray[index]["candies"]        
+        totalCandies += inputArray[index]["candies"]
     }
-    return console.log(`Students own ${totalCandies/inputArray.length} candies in average`);
+    return console.log(`Students own ${totalCandies / inputArray.length} candies in average`);
 }
 
 avgCandies(students);
