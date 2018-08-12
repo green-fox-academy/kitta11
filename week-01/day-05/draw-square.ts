@@ -14,7 +14,7 @@ let line: string = '';
         console.log(sideChar + Array(lineCount - 2).join(innerChar) + sideChar);
     }
 }*/
-//in this way I can write x times (currently 10) of a string (currently kutya)
+//in this way I can write x times (currently 10) of a string (currently kutya) but i dont get why
 //console.log(Array(10).join('kutya'));
 
 for (let i = 0; i < lineCount; i++) {

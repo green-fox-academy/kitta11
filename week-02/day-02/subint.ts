@@ -11,10 +11,10 @@ let lookUp: string = '1';
 
 function subInt(inputArray: any[], lookUpNo: string) {
     let tempArrayString: string[] = [];
-    let filteredArray: any [] = []
     for (let i = 0; i < inputArray.length; i++) {
         tempArrayString.push(inputArray[i].toString());
     }
+    let filteredArray: any[] = []
     for (let i = 0; i < tempArrayString.length; i++) {
         filteredArray.push(tempArrayString.filter(function (element) {
             return element.toString().search(lookUpNo) !== -1;

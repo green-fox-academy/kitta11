@@ -2,7 +2,7 @@
 let a: number = 123;
 let b: number = 526;
 
-//without using a temp variables it is called bitwise xor op
+//without using a temp variables it is called bitwise xor operation
 a = a ^ b;
 b = a ^ b;
 a = a ^ b;

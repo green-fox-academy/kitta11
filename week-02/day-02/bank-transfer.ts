@@ -6,7 +6,9 @@ const accounts: any[] = [
     { clientName: 'Sergei', accountNumber: 23456311, balance: 4000 }
 ];
 
-// Create function that returns the name and balance of cash on an account in a list
+
+
+//Create function that returns the name and balance of cash on an account in a list
 // getNameAndBalance(11234543);
 
 function getNameAndBalance(inputAccNum: number, inputArray: any[]) {
