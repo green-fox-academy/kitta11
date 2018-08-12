@@ -9,9 +9,9 @@ let listOfNumbers: number[] = [2, 4, 6, 8, 10, 12, 14, 16];
 function checkNums (inputArray: number[]) {
     if (inputArray.indexOf(4) > 0 && inputArray.indexOf(8) > 0 && inputArray.indexOf(12) > 0 && inputArray.indexOf(16) > 0) 
     {
-        return console.log(true);
+        return true;
     } else {
-        return console.log(false);
+        return false;
     };
 }
-checkNums(listOfNumbers);
+console.log(checkNums(listOfNumbers));
