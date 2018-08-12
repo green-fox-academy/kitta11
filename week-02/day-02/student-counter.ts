@@ -1,5 +1,6 @@
 
 'use strict';
+export{};
 
 const students: any[] = [
     { name: 'Theodor', age: 3, candies: 2 },
