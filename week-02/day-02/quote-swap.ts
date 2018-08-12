@@ -1,5 +1,5 @@
 'use strict';
-export{};
+export { };
 
 // Accidentally I messed up this quote from Richard Feynman.
 // Two words are out of place
@@ -9,11 +9,22 @@ export{};
 
 let words: string[] = ['What', 'I', 'do', 'create,', 'I', 'cannot', 'not', 'understand.'];
 
-function quoteSwap (inputArray: string[]) {
-    let [1, ...8] = words;
-
-
+function quoteSwap(inputArray: string[], wordOne: string, wordTwo: string) {
+    let iWordOne: number = words.indexOf(wordOne);
+    let iWordTwo: number = words.indexOf(wordTwo);
+    let tempWord = wordOne;
+    inputArray.splice(iWordOne, 1, wordTwo);
+    inputArray.splice(iWordTwo, 1, tempWord);
+    return inputArray;
 }
+console.log(quoteSwap(words, "do", "cannot"));
 
-console.log(quoteSwap(words));
+
+
+//function quoteSwap (inputArray: string[]) {
+
+
+//}
+
+//console.log(quoteSwap(words));
 // Expected output: "What I cannot create I do not understand."
