@@ -13,20 +13,20 @@ function readFromFile(filename: string): string {
 
 // Write a function that returns an array with the unique IP adresses.
 
-function getIPAddress(filename: string) {
-  let fileContentArray: any[] = readFromFile(filename).split('\n');
-  let ipArray: any[] = [];
-  fileContentArray.forEach(element => {
-    //Regular Expression to Match IP Addresses: ([0-9]{1,3}[\.]){3}[0-9]{1,3}
-    //https://javascript.info/regexp-methods When there’s a "g" flag, then str.match returns an array of all matches
-    ipArray.push(element.toString().match(/([0-9]{1,3}[\.]){3}[0-9]{1,3}/ig));
+function getUniqueIPAddress(filename: string) {
+  // let fileContent: string = readFromFile(filename);
+  //match method returns with an array so we dont have to push the match results into the other array too!!!!
+  let ipArray: any[] = readFromFile(filename).match(/([0-9]{1,3}[\.]){3}[0-9]{1,3}/ig);
+  let uniqueIpArray: string[] = [];
+  // this filter solution tests whether an element index and the given value indexOf return value is the same
+  uniqueIpArray = ipArray.filter(function (value, index, self) {
+    return self.indexOf(value) === index
   });
-  return ipArray;
+  return uniqueIpArray;
 }
 
-//console.log(getIPAddress('log.txt'));
-console.log(getIPAddress('log2.txt'));
-
+console.log(getUniqueIPAddress('log.txt'));
+console.log(getUniqueIPAddress('log2.txt'));
 
 // Write a function that returns the GET / POST request ratio.
 
@@ -40,14 +40,13 @@ function getPostRatio(filename: string) {
     } else {
       getCount++;
     }
-})
-console.log(postCount);
-console.log(getCount);
-return getCount/postCount;
+  })
+  console.log(postCount);
+  console.log(getCount);
+  return getCount / postCount;
 }
 
-//console.log(getPostRatio('log.txt'));
-
+console.log(getPostRatio('log.txt'));
 console.log(getPostRatio('log2.txt'));
 //should return 3/7 = 0.42
 
