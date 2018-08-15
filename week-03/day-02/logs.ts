@@ -20,7 +20,7 @@ function getUniqueIPAddress(filename: string) {
   let uniqueIpArray: string[] = [];
   // this filter solution tests whether an element index and the given value indexOf return value is the same
   uniqueIpArray = ipArray.filter(function (value, index, self) {
-    return self.indexOf(value) === index
+    return self.indexOf(value) === index;
   });
   return uniqueIpArray;
 }
