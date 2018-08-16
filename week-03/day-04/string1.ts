@@ -7,8 +7,7 @@ function xReplacey(inputString: string, letterX: string, letterY: string): strin
   if (inputString.indexOf(letterX)=== -1) {
     return inputString
    } else {
-    inputString = inputString.replace(letterX, letterY)
-    return xReplacey(inputString, letterX, letterY);
+    return xReplacey(inputString.replace(letterX, letterY), letterX, letterY);
    }
  }
 
