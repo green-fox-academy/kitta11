@@ -9,10 +9,9 @@ let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() 
 let canvasWidth: number = canvas.width;
 let canvasHeight: number = canvas.height;
 
-
 function generateSquareRec(xStart: number, yStart: number, startSize: number, loopNum: number) {
   if (loopNum > 0) {
-    ctx.strokeStyle = 'green';
+    ctx.strokeStyle = 'purple';
     ctx.strokeRect(xStart + startSize, yStart, startSize, startSize);
     ctx.strokeRect(xStart + 2 * startSize, yStart + startSize, startSize, startSize);
     ctx.strokeRect(xStart, yStart + startSize, startSize, startSize);
