@@ -13,7 +13,7 @@ const canvasHeight: number = canvas.height;
 function drawEqTriangle(x, y, size) {
   //triangle height
   let height: number = size * Math.sqrt(3) / 2;
-  let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;    
+  let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;
   ctx.beginPath();
   ctx.strokeStyle = color;
   ctx.moveTo(x, y);
@@ -31,16 +31,10 @@ function triangleFractal(x: number, y: number, size: number, loopNo: number) {
 
     let startXOne: number = x + size / 2
     let startYOne: number = y;
-    
-    drawEqTriangle(startXOne, startYOne, size / 2);
     let startXTwo: number = x;
     let startYTwo: number = y + startH;
-    
-    drawEqTriangle(startXTwo, startYTwo, size / 2);
     let startXThree: number = x - size / 2;
     let startYThree: number = y;
-    
-    drawEqTriangle(startXThree, startYThree, size / 2);
 
     size /= 2;
     startH /= 2;
@@ -52,7 +46,7 @@ function triangleFractal(x: number, y: number, size: number, loopNo: number) {
 }
 
 let startSize: number = canvasWidth / 2;
-let startX: number = canvasWidth/2;
+let startX: number = canvasWidth / 2;
 let startY: number = 0;
 
 triangleFractal(startX, startY, startSize, 7)
