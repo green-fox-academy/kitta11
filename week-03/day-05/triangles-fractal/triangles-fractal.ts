@@ -13,8 +13,9 @@ const canvasHeight: number = canvas.height;
 function drawEqTriangle(x, y, size) {
   //triangle height
   let height: number = size * Math.sqrt(3) / 2;
+  let color = `rgb(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)})`;    
   ctx.beginPath();
-  ctx.strokeStyle = "pink";
+  ctx.strokeStyle = color;
   ctx.moveTo(x, y);
   ctx.lineTo(x + size / 2, y + height);
   ctx.lineTo(x - size / 2, y + height);
