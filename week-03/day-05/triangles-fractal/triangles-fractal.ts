@@ -28,14 +28,18 @@ function triangleFractal(x: number, y: number, size: number, loopNo: number) {
   if (loopNo > 1) {
     let startH: number = size * Math.sqrt(3) / 2;
     drawEqTriangle(x, y, size);
+
     let startXOne: number = x + size / 2
     let startYOne: number = y;
+    
     drawEqTriangle(startXOne, startYOne, size / 2);
     let startXTwo: number = x;
     let startYTwo: number = y + startH;
+    
     drawEqTriangle(startXTwo, startYTwo, size / 2);
     let startXThree: number = x - size / 2;
     let startYThree: number = y;
+    
     drawEqTriangle(startXThree, startYThree, size / 2);
 
     size /= 2;
@@ -51,5 +55,5 @@ let startSize: number = canvasWidth / 2;
 let startX: number = canvasWidth/2;
 let startY: number = 0;
 
-triangleFractal(startX, startY, startSize, 10)
+triangleFractal(startX, startY, startSize, 7)
 
