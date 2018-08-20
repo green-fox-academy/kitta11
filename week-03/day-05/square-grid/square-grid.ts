@@ -27,4 +27,4 @@ let startSize: number = canvasWidth / 2;
 let startX: number = startSize / 2;
 let startY: number = startSize / 2;
 
-squareGrid(startX, startY, startSize, 8)
+squareGrid(startX, startY, startSize, 6)
