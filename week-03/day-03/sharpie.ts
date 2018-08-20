@@ -16,6 +16,10 @@ export class Sharpie {
   use () {
     this.inkAmount--;
   }
+
+  getInkAmount() {
+    return this.inkAmount;
+  }
 }
 
 //test

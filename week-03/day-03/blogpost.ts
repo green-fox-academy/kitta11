@@ -1,7 +1,6 @@
 'use strict';
-export { };
 
-class Blogpost {
+export class Blogpost {
   authorName: string;
   title: string;
   text: string;

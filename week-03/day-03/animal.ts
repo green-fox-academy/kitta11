@@ -19,6 +19,10 @@ export class Animal {
     this.hunger++
     this.thirst++
   }
+
+  getHungry() {
+    return this.hunger;
+  }
 }
 
 let tiger: Animal = new Animal(12, 34);
