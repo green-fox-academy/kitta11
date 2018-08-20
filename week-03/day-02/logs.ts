@@ -17,9 +17,8 @@ function getUniqueIPAddress(filename: string) {
   // let fileContent: string = readFromFile(filename);
   //match method returns with an array so we dont have to push the match results into the other array too!!!!
   let ipArray: any[] = readFromFile(filename).match(/([0-9]{1,3}[\.]){3}[0-9]{1,3}/ig);
-  let uniqueIpArray: string[] = [];
   // this filter solution tests whether an element index and the given value indexOf return value is the same
-  uniqueIpArray = ipArray.filter(function (value, index, self) {
+  let uniqueIpArray: string[] =  ipArray.filter(function (value, index, self) {
     return self.indexOf(value) === index;
   });
   return uniqueIpArray;
