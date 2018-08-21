@@ -6,13 +6,19 @@ import {Flower} from "./flower"
 export class Garden {
   flowerList: Flower [];
   treeList: Tree [];
-
-addFlower(flowerName){
-  this.flowerList.push(flowerName)
+constructor(){
+  this.flowerList = [];
+  this.treeList = [];
 }
 
-addTree(treeName){
-  this.treeList.push(treeName)
+addFlower(name){
+  let newFlower: Flower = new Flower(name)
+  this.flowerList.push(newFlower)
+}
+
+addTree(name){
+  let newTree: Tree = new Tree (name)
+  this.flowerList.push(newTree)
 }
 
 }
