@@ -37,3 +37,10 @@ for (let person of people) {
   person.introduce();
   person.getGoal();
 }
+
+let awesome: Cohort= new Cohort("AWESOME");
+awesome.addStudent(student);
+awesome.addStudent(john);
+awesome.addMentor(mentor);
+awesome.addMentor(gandhi);
+awesome.info();

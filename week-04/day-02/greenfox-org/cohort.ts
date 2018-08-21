@@ -14,17 +14,15 @@ export class Cohort {
     this.mentorList = [];
   }
   addStudent(Student) {
-    let newStudent: Student = new Student();
-    this.studentList.push(newStudent);
+    this.studentList.push(Student);
   }
 
   addMentor(Mentor) {
-    let newMentor: Mentor = new Mentor();
-    this.mentorList.push(newMentor);
+    this.mentorList.push(Mentor);
 
   }
 
   info() {
-    console.log(`The name cohort has ${this.studentList.length} students and ${this.mentorList.length} mentors.`)
+    console.log(`The ${this.name} cohort has ${this.studentList.length} students and ${this.mentorList.length} mentors.`)
   }
 }
