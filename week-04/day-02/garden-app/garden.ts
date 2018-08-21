@@ -20,6 +20,16 @@ export class Garden {
     this.plantList.push(newTree);
   }
 
+  waterNeedStatus () {
+    this.plantList.forEach((element) => {
+      if (element.needsWater()) {
+        console.log(`${element.getName()} ${element.getType()} needs water`);
+      } else {
+        console.log(`${element.getName()} ${element.getType()} does not need water`);
+      }
+    })
+  }
+
   watering(amountWater: number) {
     let numOfWateredPlants: number = 0;
     this.plantList.forEach(element => {
@@ -36,13 +46,14 @@ export class Garden {
     });
 
     console.log(`Watering with ${amountWater}`)
-    this.plantList.forEach((element) => {
-      if (element.needsWater()) {
-        console.log(`${element.getName()} ${element.getType()} needs water`);
-      } else {
-        console.log(`${element.getName()} ${element.getType()} does not need water`);
-      }
-    })
+    this.waterNeedStatus();
+    // this.plantList.forEach((element) => {
+    //   if (element.needsWater()) {
+    //     console.log(`${element.getName()} ${element.getType()} needs water`);
+    //   } else {
+    //     console.log(`${element.getName()} ${element.getType()} does not need water`);
+    //   }
+    // })
   }
 }
 

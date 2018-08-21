@@ -9,7 +9,7 @@ myGarden.addFlower('yellow');
 myGarden.addTree('purple');
 myGarden.addTree('orange');
 
-console.log(myGarden);
+myGarden.waterNeedStatus();
 myGarden.watering(40);
 myGarden.watering(70);
 
