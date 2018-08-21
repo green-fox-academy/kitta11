@@ -47,13 +47,6 @@ export class Garden {
 
     console.log(`Watering with ${amountWater}`)
     this.waterNeedStatus();
-    // this.plantList.forEach((element) => {
-    //   if (element.needsWater()) {
-    //     console.log(`${element.getName()} ${element.getType()} needs water`);
-    //   } else {
-    //     console.log(`${element.getName()} ${element.getType()} does not need water`);
-    //   }
-    // })
   }
 }
 
