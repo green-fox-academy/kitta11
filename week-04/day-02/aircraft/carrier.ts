@@ -28,6 +28,16 @@ export class Carrier {
     return this.airCraftList.push(newF35)
   }
 
+  getNoOfPriorityPlanes() {
+    let noOfPrior: number = 0;
+    this.airCraftList.forEach(element => {
+      if (element.isPriority()) {
+        noOfPrior++
+      }
+    });
+    return noOfPrior;
+  }
+
   fill() {
     let allAmmoNeed = 0
     this.airCraftList.forEach(element => {
@@ -36,7 +46,9 @@ export class Carrier {
 
     if (allAmmoNeed > this.storeOfAmmo && this.storeOfAmmo !== 0) {
       this.airCraftList.forEach(element => {
-        element.refill(this.storeOfAmmo / this.airCraftList.length);
+        if (element.isPriority()) {
+          element.refill(this.storeOfAmmo / this.getNoOfPriorityPlanes());
+        }
       });
       this.storeOfAmmo = 0
     } else if (allAmmoNeed < this.storeOfAmmo) {
@@ -63,15 +75,19 @@ export class Carrier {
     });
     targetCarrier.healthPoint -= totalDamage
     targetCarrier.airCraftList.forEach(element => {
-      element.attacked(totalDamage/targetCarrier.airCraftList.length);      
+      element.attacked(totalDamage / targetCarrier.airCraftList.length);
     });
   }
   geStatus() {
-    console.log(`HP: ${this.healthPoint}, Aircraft count: ${this.airCraftList.length}, 
+    if (this.healthPoint > 0) {
+      console.log(`HP: ${this.healthPoint}, Aircraft count: ${this.airCraftList.length}, 
     Ammo Storage: ${this.storeOfAmmo}, Total damage: ${this.calcTotalDamage()}
     Aircraft:`);
-    this.airCraftList.forEach(element => {
-      console.log(element.getStatus());
-    });
+      this.airCraftList.forEach(element => {
+        console.log(element.getStatus());
+      });
+    } else {
+      console.log(`It's dead Jim :(`)
+    }
   }
 }

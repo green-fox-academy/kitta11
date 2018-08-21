@@ -53,10 +53,8 @@ export class Aircraft {
   isPriority() {
     if (this.type === 'F35') {
       return true;
-    } else if (this.type === 'F16') {
+    } else  {
       return false;
-    } else {
-      console.log(`You called the function with a wrong type`);
     }
   }
 }
