@@ -21,5 +21,7 @@ myEnemyCarrier.fill()
 // console.log(myEnemyCarrier);
 
 myCarrier.fight(myEnemyCarrier);
-console.log(myCarrier);
-console.log(myEnemyCarrier);
+// console.log(myCarrier);
+// console.log(myEnemyCarrier);
+myCarrier.geStatus()
+myEnemyCarrier.geStatus();

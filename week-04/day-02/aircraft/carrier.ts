@@ -8,11 +8,13 @@ export class Carrier {
   airCraftList: Aircraft[];
   storeOfAmmo: number;
   healthPoint: number;
+  totalDamage: number;
 
   constructor(storeOfAmmo: number, healthPoint: number) {
     this.storeOfAmmo = storeOfAmmo;
     this.healthPoint = healthPoint;
     this.airCraftList = [];
+    this.totalDamage = 0;
   }
 
   addF16() {
@@ -32,11 +34,9 @@ export class Carrier {
       allAmmoNeed += element.getReFillNeed()
     });
 
-    console.log(`Needed ammo: ${allAmmoNeed} and the available ammo ${this.storeOfAmmo}`);
-
     if (allAmmoNeed > this.storeOfAmmo && this.storeOfAmmo !== 0) {
       this.airCraftList.forEach(element => {
-        element.refill(this.storeOfAmmo/this.airCraftList.length);
+        element.refill(this.storeOfAmmo / this.airCraftList.length);
       });
       this.storeOfAmmo = 0
     } else if (allAmmoNeed < this.storeOfAmmo) {
@@ -49,12 +49,29 @@ export class Carrier {
     }
   }
 
-  fight(targetCarrier: Carrier){
+  calcTotalDamage() {
+    this.airCraftList.forEach(element => {
+      this.totalDamage += element.getAllDamage();
+    });
+    return this.totalDamage;
+  }
+
+  fight(targetCarrier: Carrier) {
     let totalDamage: number = 0;
     this.airCraftList.forEach(element => {
-      totalDamage+= element.fight();
+      totalDamage += element.fight();
     });
-    console.log(totalDamage);
-    targetCarrier.healthPoint-=totalDamage
+    targetCarrier.healthPoint -= totalDamage
+    targetCarrier.airCraftList.forEach(element => {
+      element.attacked(totalDamage/targetCarrier.airCraftList.length);      
+    });
+  }
+  geStatus() {
+    console.log(`HP: ${this.healthPoint}, Aircraft count: ${this.airCraftList.length}, 
+    Ammo Storage: ${this.storeOfAmmo}, Total damage: ${this.calcTotalDamage()}
+    Aircraft:`);
+    this.airCraftList.forEach(element => {
+      console.log(element.getStatus());
+    });
   }
 }

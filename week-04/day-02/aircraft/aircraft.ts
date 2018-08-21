@@ -19,10 +19,18 @@ export class Aircraft {
     return this.currentAmmo;
   }
 
+  getAllDamage(){
+    return this.allDamage
+  }
+
   fight() {
     let causedDamage: number = this.baseDamage * this.currentAmmo;
     this.currentAmmo = 0;
     return causedDamage;
+  }
+
+  attacked(damageInput: number){
+    return this.allDamage+=damageInput
   }
 
   getReFillNeed() {
