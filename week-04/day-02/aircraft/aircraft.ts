@@ -1,6 +1,6 @@
 'use strict';
 
-export class Aircraft{
+export class Aircraft {
   protected type: string;
   protected maxAmmo: number;
   protected currentAmmo: number;
@@ -15,29 +15,40 @@ export class Aircraft{
     this.allDamage = 0;
   }
 
-  fight(){
-
+  getCurrentAmo() {
+    return this.currentAmmo;
   }
 
-  refill(){
-
+  fight() {
+    let causedDamage: number = this.baseDamage * this.currentAmmo;
+    this.currentAmmo = 0;
+    return causedDamage;
   }
 
-  getType(){
+  getReFillNeed() {
+    return this.maxAmmo-this.currentAmmo;
+  }
+  refill(fillAmount: number) {
+    let emptySpace: number = this.getReFillNeed();
+    this.currentAmmo+= fillAmount;
+    return fillAmount-emptySpace;
+  }
+
+  getType() {
     return this.type;
   }
 
-  getStatus(){
-    return `Type ${this.type}, Ammo: ${this.ammo}, Base Damage: ${this.baseDamage}, All Damage: ${this.allDamage}`
+  getStatus() {
+    return `Type ${this.type}, Ammo: ${this.currentAmmo}, Base Damage: ${this.baseDamage}, All Damage: ${this.allDamage}`
   }
 
-  isPriority(){
+  isPriority() {
     if (this.type === 'F35') {
       return true;
-    } else if (this.type ==='F16') {
+    } else if (this.type === 'F16') {
       return false;
     } else {
-      console.log(`You called the function with a wrong type`);   
+      console.log(`You called the function with a wrong type`);
     }
   }
 }
