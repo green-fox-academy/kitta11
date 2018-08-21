@@ -10,10 +10,9 @@ myGarden.addTree('purple');
 myGarden.addTree('orange');
 
 console.log(myGarden);
-
-console.log(myGarden.checkWaterNeed());
-
 myGarden.watering(40);
-console.log(myGarden.checkWaterNeed());
+console.log(myGarden);
 myGarden.watering(70);
-console.log(myGarden.checkWaterNeed());
+console.log(myGarden);
+
+

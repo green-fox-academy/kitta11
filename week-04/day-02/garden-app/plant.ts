@@ -2,7 +2,7 @@
 
 export class Plant {
   protected name: string;
-  public waterAmount: number;
+  protected waterAmount: number;
   protected absorbingCap: number;
 
   constructor (name: string = 'nonamePlant'){
@@ -29,5 +29,9 @@ export class Plant {
 
   getAbsorbCap() {
     return this.absorbingCap;
+  }
+
+  getWatered(inputAmount: number) {
+    return this.waterAmount+= inputAmount*this.absorbingCap
   }
 }

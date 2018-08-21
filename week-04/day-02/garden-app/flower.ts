@@ -3,7 +3,7 @@ import { Plant } from "./plant"
 
 export class Flower extends Plant {
   
-  constructor(name: string, ) {
+  constructor(name: string) {
     super(name);
     this.absorbingCap = 0.75;
   }
