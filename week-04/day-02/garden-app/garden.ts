@@ -21,5 +21,18 @@ addTree(name){
   this.flowerList.push(newTree)
 }
 
+checkWaterNeed(){
+  this.flowerList.forEach(element => {
+    if (element.needsWater) {
+      console.log(`${element.name} flower needs water`);
+    }
+  })
+  this.treeList.forEach(element => {
+    if (element.needsWater) {
+      console.log(`${element.name} tree needs water`);
+    }
+  });
+}
+
 }
 
