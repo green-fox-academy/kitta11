@@ -5,12 +5,21 @@ import {Carrier} from "./carrier";
 
 'use strict';
 
-let myCarrier: Carrier = new Carrier(40, 20);
+let myCarrier: Carrier = new Carrier(200, 3000);
+myCarrier.addF16();
 myCarrier.addF16();
 myCarrier.addF35()
-
-console.log(myCarrier);
-
+myCarrier.addF35()
 myCarrier.fill();
-console.log(myCarrier);
+// console.log(myCarrier);
 
+let myEnemyCarrier: Carrier = new Carrier(200, 3000)
+myEnemyCarrier.addF16()
+myEnemyCarrier.addF16()
+myEnemyCarrier.addF35()
+myEnemyCarrier.fill()
+// console.log(myEnemyCarrier);
+
+myCarrier.fight(myEnemyCarrier);
+console.log(myCarrier);
+console.log(myEnemyCarrier);

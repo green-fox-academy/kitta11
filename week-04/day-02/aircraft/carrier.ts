@@ -48,4 +48,13 @@ export class Carrier {
       throw 'Your carrier run out of ammo...'
     }
   }
+
+  fight(targetCarrier: Carrier){
+    let totalDamage: number = 0;
+    this.airCraftList.forEach(element => {
+      totalDamage+= element.fight();
+    });
+    console.log(totalDamage);
+    targetCarrier.healthPoint-=totalDamage
+  }
 }
