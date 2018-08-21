@@ -2,11 +2,14 @@
 
 export class Plant {
   protected name: string;
+  protected type: string;
   protected waterAmount: number;
   protected absorbingCap: number;
+  
 
   constructor (name: string = 'nonamePlant'){
     this.name = name;
+    this.type = '';
     this.waterAmount = 0;
     this.absorbingCap = 0;
   }
@@ -23,6 +26,9 @@ export class Plant {
     return this.name
   }
 
+  getType() {
+    return this.type;
+  }
   getWaterAmont(){
     return this.waterAmount;
   }

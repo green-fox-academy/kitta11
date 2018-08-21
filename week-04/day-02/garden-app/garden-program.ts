@@ -11,8 +11,6 @@ myGarden.addTree('orange');
 
 console.log(myGarden);
 myGarden.watering(40);
-console.log(myGarden);
 myGarden.watering(70);
-console.log(myGarden);
 
 
