@@ -21,7 +21,7 @@ class SharpieSet {
   //MIERT NEM MUKODIK FILTERREL????
   removeTrash() {
     return this.sharpieList.filter(function (element) {
-      element.getInkAmount() > 0
+      return element.inkAmount > 0
     })
   }
 
@@ -54,8 +54,8 @@ console.log(sharpieSetTest.sharpieList[7]);
 
 console.log(sharpieSetTest.countUsable());
 
-sharpieSetTest.removeTrash();
-console.log(sharpieSetTest);
+console.log(sharpieSetTest.removeTrash());
+// console.log(sharpieSetTest);
 
 
 

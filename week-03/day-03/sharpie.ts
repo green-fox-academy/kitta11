@@ -5,7 +5,7 @@ import { userInfo } from "os";
 export class Sharpie {
   private color: string;
   private width: number;
-  private inkAmount: number;
+  public inkAmount: number;
 
   constructor(color: string, width: number) {
     this.color = color;
