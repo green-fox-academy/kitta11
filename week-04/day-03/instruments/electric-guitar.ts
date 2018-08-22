@@ -11,7 +11,8 @@ export class ElectricGuitar extends StringedInstrument {
     this.howdoesitSound = 'Twang';
 
   }
-
+//how can I log this by default in order to accomplish the test case 
+//(console.log cause a conflict in output type)
   play() {
     return `${super.play()} that goes ${this.howdoesitSound}`;
   }
