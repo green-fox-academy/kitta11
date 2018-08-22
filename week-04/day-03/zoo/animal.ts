@@ -4,10 +4,27 @@ export abstract class Animal {
   protected name: string;
   protected age: number;
   protected gender: string;
+  protected breedingMethod: string;
+  protected favFood: string;
 
-  getName(){}
 
-  breed(){}
+  constructor(name: string){
+    this.name = name;
+  }
+
+  getName(){
+    return this.name
+  }
+
+  breed() {
+    return this.breedingMethod;
+  }
+
+  feed (){
+    console.log(`${this.name}: Give me my favorites ${this.favFood}!!!`)
+  }
+
+
 
   // Write down at least 3 fields and/or methods that should be included in Animal.
 
