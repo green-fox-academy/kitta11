@@ -1,16 +1,18 @@
 import { StringedInstrument } from "./stringedinstrument";
 
 'use strict';
-class Violin extends StringedInstrument {
+export class Violin extends StringedInstrument {
+  howdoesitSound: string;
 
-  constructor() {
+  constructor(numberOfStrings: number = 4) {
     super();
-    this.numberOfStrings = 4
+    this.name = 'Electric Guitar';
+    this.numberOfStrings = numberOfStrings;
+    this.howdoesitSound = 'Screech';
 
   }
-  play(): void {
-    console.log('Screech');
-    ;
-  }
 
+  play() {
+    return `${super.play()} that goes ${this.howdoesitSound}`;
+  }
 }
