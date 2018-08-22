@@ -24,8 +24,4 @@ export abstract class Animal {
     console.log(`${this.name}: Give me my favorites ${this.favFood}!!!`)
   }
 
-
-
-  // Write down at least 3 fields and/or methods that should be included in Animal.
-
 }
