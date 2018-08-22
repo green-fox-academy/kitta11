@@ -16,9 +16,10 @@ export class Vehicle {
 
   public board(noPassangers: number) {
     if (this.maxCapacity < noPassangers) {
-      console.log(`You have exceeded my capacity with ${noPassangers - this.maxCapacity}`);
+      console.log(`You have exceeded the capacity of ${this.name} with ${noPassangers - this.maxCapacity} person`);
     } else {
       this.currentCapacity = noPassangers;
+      console.log(`${this.name}'s boarding with ${noPassangers} passangers completed. ready to take off.`)
     }
   }
 

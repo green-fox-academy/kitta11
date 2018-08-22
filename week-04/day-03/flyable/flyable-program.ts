@@ -16,7 +16,7 @@ console.log('------------------------');
 heliTwo.getInfoCard();
 
 
-console.log('*****B o a r d i n g and t a k e o f f****');
+console.log('**Boarding and takeoff**');
 console.log('*****---------------****');
 heliOne.board(12);
 console.log('------------------------');
