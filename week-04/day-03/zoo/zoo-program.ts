@@ -12,6 +12,8 @@ let mammalTwo = new Mammal("Bear", 3);
 let birdOne = new Bird("Parrot");
 let birdTwo = new Bird("Pinguin", false);
 
+
+console.log('*******---*******')
 console.log("How do you breed?");
 console.log('*******---*******')
 
@@ -27,14 +29,26 @@ console.log("A " + birdOne.getName() + " is breeding by " + birdOne.breed());
 console.log('-----------------')
 console.log("A " + birdTwo.getName() + " is breeding by " + birdTwo.breed());
 
+
+console.log('*******---*******')
 console.log("Hey BIRD! Can you fly?");
 console.log('*******---*******')
 
+birdOne.takeOff()
+console.log('-----------------')
+birdTwo.takeOff()
+console.log('-----------------')
 birdOne.fly();
 console.log('-----------------')
 birdTwo.fly();
+console.log('-----------------')
+birdOne.land()
+console.log('-----------------')
+birdTwo.land()
 
-console.log("Hey BIRD! Can you fly?");
+
+console.log('*******---*******')
+console.log("Lets feed them");
 console.log('*******---*******')
 
 mammalOne.feed()
