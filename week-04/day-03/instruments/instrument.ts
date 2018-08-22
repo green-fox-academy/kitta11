@@ -3,6 +3,5 @@
 
 export abstract class Instrument {
   protected name: string;
-  play(){
-  }; 
+  abstract play(): void; 
 }
