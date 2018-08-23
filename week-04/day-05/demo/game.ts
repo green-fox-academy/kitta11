@@ -7,7 +7,8 @@ export class Game {
   numberofPlayers: number;
   players: Player[];
 
-  constructor(numberofRounds: number = 40, startingPoint: number = 250, numberofPlayers: number = 4) {
+  constructor(numberofRounds: number = 40, startingPoint: number = 250, 
+    numberofPlayers: number = 4) {
     this.numberofRounds = numberofRounds;
     this.startingPoint = startingPoint;
     this.numberofPlayers = numberofPlayers
@@ -39,7 +40,8 @@ export class Game {
   }
 
   play() {
-    while (this.players.every(element => { return element.getCurrentPoint() > 0 }) && this.numberofRounds > 0 ) {
+    while (this.players.every(element => { return element.getCurrentPoint() > 0 }) 
+    && this.numberofRounds > 0 ) {
       console.log(`REMAINING NUMBER OF ROUNDS ${this.numberofRounds}`)
       this.players.forEach(element => {
         element.throwDart();

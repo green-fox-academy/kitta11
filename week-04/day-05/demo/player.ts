@@ -66,7 +66,6 @@ export class Player {
   }
 
 
-
   pickName(){
     let fileContentArray: any[] = readFromFile('disney-princesses.txt').split('\n');
     return fileContentArray[Math.floor(Math.random()*fileContentArray.length)]
