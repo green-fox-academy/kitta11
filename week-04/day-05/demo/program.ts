@@ -1,12 +1,9 @@
 import { Player } from "./player";
+import { Game } from "./game";
 
-let testDisneyGirl: Player = new Player('Cinderella');
-testDisneyGirl.playerInfoCard()
 
-console.log(testDisneyGirl.throwDart())
-console.log(testDisneyGirl.throwDart())
-console.log(testDisneyGirl.throwDart())
-console.log(testDisneyGirl.throwDart())
-console.log(testDisneyGirl.throwDart())
 
-testDisneyGirl.playerInfoCard()
+let myFirstGame: Game = new Game();
+myFirstGame.startGame()
+myFirstGame.getGamePlayers()
+

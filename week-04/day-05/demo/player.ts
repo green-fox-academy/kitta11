@@ -1,3 +1,4 @@
+import {readFromFile} from "../../../library/readfromfile"
 'use strict';
 
 export class Player {
@@ -8,8 +9,8 @@ export class Player {
   protected noOfRounds: number;
   protected noOfWins: number;
 
-  constructor(name: string) {
-    this.name = name;
+  constructor() {
+    this.name = this.pickName();
     this.level = 1;
     this.isFortunate = this.fortuneGen()
     this.alcoholLevel = 0;
@@ -47,5 +48,9 @@ export class Player {
       actualPoint =  Math.floor((Math.random()*20))*Math.floor(Math.random()*3)
     }
     return actualPoint
+  }
+  pickName(){
+    let fileContentArray: any[] = readFromFile('disney-princesses.txt').split('\n');
+    return fileContentArray[Math.floor(Math.random()*fileContentArray.length)]
   }
 }
