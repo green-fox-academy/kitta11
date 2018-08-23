@@ -20,11 +20,14 @@ export class Game {
       this.players.push(new Player());
     }
   }
-
   getGamePlayers() {
     this.players.forEach(element => {
       element.playerInfoCard()
     });
+  }
+
+  getGameInfo(){
+    console.log(`This game has ${this.numberofRounds} rounds, ${this.numberofPlayers} players and starts from ${this.startingPoint} point`);    
   }
 
 }
