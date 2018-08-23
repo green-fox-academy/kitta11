@@ -9,5 +9,11 @@ console.log('                                                  ');
 console.log('*** BASIC GAME INFO ***');
 myFirstGame.getGameInfo()
 console.log('*** LETS PICK RANDOMLY THE PLAYERS ***');
-myFirstGame.getGamePlayers()
+myFirstGame.getPlayersCard()
+console.log('                                                  ');
+console.log('*** GAME TIME ***');
+myFirstGame.play();
+console.log('*** THE WINNER ***');
+console.log(myFirstGame.getWinner());
+
 

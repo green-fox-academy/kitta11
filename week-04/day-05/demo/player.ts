@@ -6,16 +6,18 @@ export class Player {
   protected level: number;
   protected isFortunate: boolean;
   protected alcoholLevel: number;
+  protected currentPoints: number;
   protected noOfRounds: number;
   protected noOfWins: number;
 
   constructor() {
     this.name = this.pickName();
-    this.level = 1;
+    this.level = Math.floor(Math.random() * 4);
     this.isFortunate = this.fortuneGen()
-    this.alcoholLevel = 0;
+    this.alcoholLevel = Math.floor(Math.random() * 4);
     this.noOfRounds = 0;
     this.noOfWins = 0;
+    this.currentPoints = 0;
   }
 
   fortuneGen(): boolean {
@@ -30,12 +32,21 @@ export class Player {
     and I won ${this.noOfWins}`)
   }
 
+  playerBeforeRoundCard() {
+    console.log(`
+    Name: ${this.name}
+    StartingPoint ${this.currentPoints}`)
+  }
   getName() {
     return this.name
   }
 
-  getLevel() {
-    return this.level;
+  getCurrentPoint() {
+    return this.currentPoints;
+  }
+
+  startGameSetting(startPoint: number){
+    this.currentPoints = startPoint;
   }
 
   throwDart() {
@@ -47,10 +58,19 @@ export class Player {
     } else {
       actualPoint =  Math.floor((Math.random()*20))*Math.floor(Math.random()*3)
     }
-    return actualPoint
+    this.currentPoints-=actualPoint;
+    console.log(
+      `//${this.name}// threw ${actualPoint} POINTS,
+      so her current points are: ${this.currentPoints}
+                                         `)
   }
+
+
+
   pickName(){
     let fileContentArray: any[] = readFromFile('disney-princesses.txt').split('\n');
     return fileContentArray[Math.floor(Math.random()*fileContentArray.length)]
   }
+
+
 }
