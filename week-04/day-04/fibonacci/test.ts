@@ -9,6 +9,7 @@ test ('testing the Fibonacci function', t => {
   t.equal (fibonacci(1), 1, 'Fibonacci value of 1 is 1')
   t.equal (fibonacci(12), 144, 'Fibonacci value of 12 is 144')
   //QUESTION: HOW CAN WE TEST AGAINS EXCEPTION ERROR THROWING
-  // t.throws (fibonacci(-12), Error('Please provide a positive number')) 
+  t.throws (function() {fibonacci(-12)}, 'Please provide a positive number') 
   t.end()
 })
+
