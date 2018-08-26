@@ -6,3 +6,4 @@
 
 [Todo app task repo](https://github.com/kitta11/todo-app)
 
+[Trial exam practice repo] (https://github.com/kitta11/fulvipes-basic-exam)
