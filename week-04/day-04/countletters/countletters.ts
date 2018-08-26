@@ -1,9 +1,8 @@
 'use strict'
 
+let teststring: string = 'barbanegra';
 
-let teststring: string = 'barbaneeegr$! tyyya';
-
-function countletters(inputString: string) {
+export function countletters(inputString: string) {
   let dictionary: object[] = [];
   let sortedString = inputString.split('').sort().join('');
   let tempString = sortedString;
@@ -21,5 +20,5 @@ function countletters(inputString: string) {
   }
   return dictionary
 }
-console.log(countletters(teststring))
 
+console.log(countletters(teststring)[1]["letter"]==='b')

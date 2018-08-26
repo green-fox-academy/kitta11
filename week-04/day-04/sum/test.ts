@@ -11,7 +11,7 @@ test ('testing NumberList class numbertoadd method', t =>  {
   t.equal (testOneNumber.addNum(), 11, 'one element in array should return the element');
   let testNullinArray: Numberlist = new Numberlist([null]);
   t.equal (testNullinArray.addNum(), 0, 'null in the array will return 0');
-  let teststringinArray: Numberlist = new Numberlist(['string']);
-  t.equal (teststringinArray.addNum(), 0, 'string in the array will throw error');
+  // let teststringinArray: Numberlist = new Numberlist(['string']);
+  // t.equal (teststringinArray.addNum(), ErrorEvent, 'string in the array will throw error');
   t.end();
 })
