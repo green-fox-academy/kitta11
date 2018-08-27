@@ -98,3 +98,12 @@ test('Write out twenty-two thousand two hundred and fifty-nine, if input number 
   t.end()  
 
 })
+
+test('Write out nine hundred and ninety-nine thousand nine hundred and ninety-nine, if input number is 999999', t => {
+  let inputNumber: number = 999999;
+  let result: string = overThousand(inputNumber);
+
+  t.equal(result, `nine hundred and ninety-nine thousand nine hundred and ninety-nine`, 'nine hundred and ninety-nine thousand nine hundred and ninety-nine, if input number is 999999')
+  t.end()  
+
+})
