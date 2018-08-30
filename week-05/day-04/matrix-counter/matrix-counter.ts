@@ -1,37 +1,43 @@
 import { readFromFile } from "../../../library/readfromfile";
-
 'use strict'
 
-function matrixRowTotal(filename: string) {
-  let readFromFileArray: string[] = readFromFile(filename).split('\n');
+const fs = require('fs');
+const charEncoding: string = 'utf8'
 
-  for (let i = 0; i < readFromFileArray.length; i++) {
-    while (readFromFileArray[i].indexOf(' ') > 0) {
-      readFromFileArray[i] = readFromFileArray[i].replace(' ', ',')
-    }
+
+function matrixRowTotal(fromFile: string) {
+  let readFromFileArray: string[] = [];
+
+  try {
+    readFromFileArray = readFromFile(fromFile).split('\n');
+  } catch (error) {
+    console.log(`There is no ${fromFile} file in the library`)
   }
-
   let twoDArray: any[][] = [];
+  twoDArray = readFromFileArray.map(element => {
+    return element.split(' ')
+  })
 
-  readFromFileArray.forEach(row => {
-    twoDArray.push(row.split(','))
-  });
-
-  let counter: number [] = []
+  let counter: number[] = []
   for (let row = 0; row < twoDArray.length; row++) {
-  
+
     let rowTotal: number = 0;
     for (let col = 0; col < twoDArray[row].length; col++) {
-      rowTotal+=parseInt(twoDArray[row][col]);      
+      rowTotal += parseInt(twoDArray[row][col]);
     }
     counter.push(rowTotal);
-    rowTotal=0;
+    rowTotal = 0;
   }
-  counter.forEach((element, index) => {
-    console.log(`Matrix ${index}. line total sum: ${element}`) 
+
+  let toFile: string = fromFile.slice(0, fromFile.length - 4) + '-total.txt'
+  twoDArray.forEach((element, index) => {
+    fs.appendFileSync(toFile, `${element}: ${counter[index]} in total \n`)
   })
-  // return counter
 }
 
-// console.log(matrixRowTotal('matrix.txt'))
-matrixRowTotal('matrix.txt')
+
+
+// matrixRowTotal('matrixOne.txt')
+matrixRowTotal('matrixTwo.txt')
+// matrixRowTotal('matrixTwoo.txt')
+
