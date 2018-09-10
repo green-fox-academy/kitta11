@@ -71,10 +71,13 @@ header {
   color: gray;
 }
 
-.thumbnails {
+.thumbnails ul {
   display: flex;
   justify-content: space-between;
   align-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .square {
@@ -84,9 +87,9 @@ header {
   background: #E60C2A;
   margin: 1px;
 }
-.doblecol{
-  display: flex;
 
+.doblecol {
+  display: flex;
 }
 
 .rightcol {
