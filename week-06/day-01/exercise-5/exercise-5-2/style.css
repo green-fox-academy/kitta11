@@ -65,7 +65,7 @@ header {
 }
 
 .leftcol {
-  width: 12%;
+  width: 80px;
   height: 100%;
   background: #ffd62a;
   display: flex;
@@ -74,7 +74,7 @@ header {
 }
 
 .rightcol {
-  width: 12%;
+  width: 80px;
   background: #800F7D;
 }
 
