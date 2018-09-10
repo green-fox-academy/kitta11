@@ -1,0 +1,124 @@
+body {
+  margin: 0 auto;
+  background: white;
+  height: 100vh;
+  max-width: 1024px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  background: #2CFFFE;
+  width: 100%;
+  height: 10%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.mainnav {
+  list-style-type: none;
+  padding: 1%;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.rightnav {
+  width: 10%;
+  list-style-type: none;
+  padding: 1%;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navitem {
+  height: 80%;
+  width: 100px;
+  margin: 2px;
+  background: #3BEAFD;
+}
+
+.content {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: stretch;
+}
+
+.maincol {
+  flex: 1 1 auto;
+  padding: 0 2%;
+  background: #ffd62a;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between
+}
+
+.text {
+  /* text-align: justify; */
+  padding: 10px;
+  color: gray;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.square {
+  flex: 1 1 auto;
+  min-width: 40px;
+  min-height: 80px;
+  background: #E60C2A;
+  margin: 1px;
+}
+.doblecol{
+  display: flex;
+
+}
+
+.rightcol {
+  min-width: 100px;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  background: #57D226;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.lines ul {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  padding: 0;
+  margin: 2px 2px;
+}
+
+.lines li {
+  background: #563658;
+  min-height: 30px;
+  width: 100%;
+  margin: 2px;
+  list-style-type: none;
+}
+
+footer {
+  background: #0B24FA;
+  height: 10%;
+  width: 100%;
+}
