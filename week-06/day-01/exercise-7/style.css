@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box
+}
+
 body {
   margin: 0 auto;
   background: white;
@@ -25,7 +29,6 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
 }
 
 .mainnav {
@@ -61,23 +64,23 @@ header {
 .box {
   padding: 0px;
   color: gray;
-  width: 50%; 
+  width: 50%;
   display: flex;
-  margin: 5px;
+  margin: 2px;
   justify-content: space-between;
 }
 
 .green {
-
   background: #57D226;
   justify-content: center;
   align-content: center;
 }
+
 .text {
   padding: 10px;
   color: aliceblue
-
 }
+
 .red {
   background: #E60C2A;
   height: 80%;
