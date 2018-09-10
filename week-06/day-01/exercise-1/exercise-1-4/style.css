@@ -1,0 +1,33 @@
+.container {
+  width: 350px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.item {
+  width: 100%;
+  height: 25%;
+  padding: 0;
+  margin: 0;
+
+  align-self: flex-start;
+}
+
+.green {
+  background: #51d400;
+  order: 1;
+}
+
+.yellow {
+  background: #ffd62a;
+  height: 50%;
+  order: 3;
+}
+
+.purple {
+  background: #b02aff;
+  order: 2;
+}

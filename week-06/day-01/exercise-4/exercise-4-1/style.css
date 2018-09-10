@@ -1,0 +1,44 @@
+body {
+  margin: 0 auto;
+  width: 800px;
+  background: white;
+}
+
+header {
+  background: #b02aff;
+  width: 100%;
+  height: 60px;
+}
+
+.nav {
+  list-style-type: none;
+  display: flex;
+  padding: 1%;
+}
+
+.navitem {
+  height: 40px;
+  width: 100px;
+  margin: 2px;
+  background: #3BEAFD;
+  display: block;
+}
+
+
+.content {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  width: 70%;
+  background: #ffd62a;
+  padding: 2%;
+}
+
+.sidebar {
+  width: 30%;
+  background: #57D226;
+}

@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffd62a;
+  padding: 0;
+}
+
+.item {
+  list-style-type: none;
+  width: 100px;
+  height: 100px;
+  padding: 0;
+  margin: 3px;
+  background: #b02aff;
+  align-self: center;
+
+}
+
+

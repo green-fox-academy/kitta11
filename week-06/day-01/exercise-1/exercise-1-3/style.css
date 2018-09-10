@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+}
+
+.item {
+  min-width: 25%;
+  height: 190px;
+  padding: 0;
+  margin: 0;
+
+  align-self: flex-end;
+}
+
+.green {
+  background: #51d400;
+}
+
+.yellow {
+  background: #ffd62a;
+  width: 50%;
+}
+
+.purple {
+  background: #b02aff;
+}

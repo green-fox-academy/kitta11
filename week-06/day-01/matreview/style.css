@@ -1,0 +1,12 @@
+
+
+
+/* nth-child refers to a given child in the parent. 
+e.g. in this example 1st p and the b in the p */
+
+.content :nth-child(1) {
+  color: green;
+  text-decoration: overline;
+  text-transform: uppercase;
+}
+
