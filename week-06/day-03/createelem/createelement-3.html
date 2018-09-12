@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: CreateElement</title>
+  <style>
+    div#pets {}
+  </style>
+</head>
+
+<body>
+  <div id="pets"></div>
+
+  <script>
+    const kids = [
+      { 'petName': 'Wattled crane', 'owner': 'Bryant' },
+      { 'petName': 'Devil, tasmanian', 'owner': 'Alejandro' },
+      { 'petName': 'Mynah, common', 'owner': 'Nelie' },
+      { 'petName': 'Dolphin, common', 'owner': 'Mariele' },
+      { 'petName': 'Gray duiker', 'owner': 'Maddalena' },
+      { 'petName': 'Crab (unidentified)', 'owner': 'Lucine' },
+      { 'petName': 'Ant (unidentified)', 'owner': 'Lorianna' },
+      { 'petName': 'Bison, american', 'owner': 'Tommie' },
+      { 'petName': 'Yellow mongoose', 'owner': 'Vivyan' },
+      { 'petName': 'Carpet snake', 'owner': 'Veda' },
+      { 'petName': 'Lesser mouse lemur', 'owner': 'Isidor' },
+    ];
+
+    let parentDiv = document.querySelector('#pets');
+
+    kids.forEach(element => {
+      let newArticle = document.createElement('article');
+      parentDiv.appendChild(newArticle);
+      let newH3 = document.createElement('h3')
+      newH3.style.color = 'tomato'
+      newArticle.appendChild(newH3);
+      newH3.innerText = element.owner;
+      let newP = document.createElement('p');
+      newArticle.appendChild(newP);
+      newP.innerText = element.petName
+    })
+  </script>
+</body>
+
+</html>
