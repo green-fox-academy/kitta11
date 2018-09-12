@@ -7,33 +7,26 @@
 </head>
 
 <body>
-  <p class="apple">apple</p>
-  <p class="balloon">banana</p>
-  <p class="cat">car</p>
-  <p class="animals">goat rabbit <strong>cat</strong> dog</p>
+  <ul>
+    <li>placeholder</li>
+    <li>placeholder</li>
+    <li>placeholder</li>
+    <li>placeholder</li>
+  </ul>
 
   <script>
-    let lastOne = document.querySelector('.animals');
-    console.log(lastOne)
-    let lastOneContent = lastOne.innerHTML
-    console.log(lastOneContent);
-    let allParagraph = document.querySelectorAll('p');
-
-    //why foreach can not do this loop?
-    for (let i = 0; i < allParagraph.length; i++) {
-      if (allParagraph[i].innerHTML !== lastOneContent) {
-        allParagraph[i].innerHTML += lastOneContent
-      };
+    let newList = ['apple', 'banana', 'cat', 'dog'];
+    let origiList = document.querySelectorAll('li');
+    for (let i = 0; i < origiList.length; i++) {
+      origiList[i].innerHTML = newList[i];
     }
+    let ulTag = document.querySelector('ul');
+    console.log(ulTag)
+    ulTag.setAttribute('style', 'background-color:limegreen')
+    // ulTag.style('background-color', 'limegreen')
+
+    console.log(ulTag)
   </script>
-
-  <!-- <script>
-    let paragraphs = document.getElementsByTagName('p');
-
-    for (let i = 0; i < paragraphs.length; i++) {
-      paragraphs[i].innerHTML = paragraphs[paragraphs.length - 1].innerHTML;
-    }
-  </script> -->
 
 </body>
 

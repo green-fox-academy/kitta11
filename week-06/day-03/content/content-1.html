@@ -20,9 +20,17 @@
     let allParagraph = document.querySelectorAll('p');
 
     //why foreach can not do this loop?
+    // for (let i = 0; i < allParagraph.length; i++) {
+    //   allParagraph[i].innerHTML = lastOneContent;
+    // }
+
+    //why foreach can not do this loop?
     for (let i = 0; i < allParagraph.length; i++) {
-      allParagraph[i].innerHTML = lastOneContent;
+      if (allParagraph[i].innerHTML !== lastOneContent) {
+        allParagraph[i].innerHTML += lastOneContent
+      };
     }
+
   </script>
 
   <!-- <script>
