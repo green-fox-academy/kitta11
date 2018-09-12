@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: onclick</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    div {
+      height: 100vh;
+    }
+
+    .party {
+      background: url(https: //media.giphy.com/media/4c4jQPdVv381G/giphy.gif);
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button>Party</button>
+  </div>
+  <script>
+    let buttonTag = document.getElementsByTagName('button')[0]
+    buttonTag.style.height = '30px';
+    buttonTag.style.width = 'auto';
+    buttonTag.style.backgroundColor = 'tomato';
+    buttonTag.style.color = 'white';
+
+    buttonTag.onclick = function () {
+      if (buttonTag.innerText === 'Party') {
+        buttonTag.innerText = 'Party is ON'
+        buttonTag.style.backgroundColor = 'blue'
+      } else {
+        buttonTag.innerText = 'Party'
+        buttonTag.style.backgroundColor = 'tomato'
+      }
+    }
+
+
+  </script>
+
+  <!-- You can work in the html or in a separate js file. Like:
+    <script>
+      Turn the party on and off by clicking the button. (the whole page)
+    </script>
+    OR
+    <script src="events-1.js"></script> -->
+</body>
+
+</html>
