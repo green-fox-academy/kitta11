@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: innerHTML, textContent</title>
+</head>
+
+<body>
+  <p class="apple">apple</p>
+  <p class="balloon">banana</p>
+  <p class="cat">car</p>
+  <p class="animals">goat rabbit <strong>cat</strong> dog</p>
+
+  <script>
+    let lastOne = document.querySelector('.animals');
+    console.log(lastOne)
+    let lastOneContent = lastOne.innerHTML
+    console.log(lastOneContent);
+    let allParagraph = document.querySelectorAll('p');
+
+    //why foreach can not do this loop?
+    for (let i = 0; i < allParagraph.length; i++) {
+      allParagraph[i].innerHTML = lastOneContent;
+    }
+  </script>
+
+  <!-- <script>
+    let paragraphs = document.getElementsByTagName('p');
+
+    for (let i = 0; i < paragraphs.length; i++) {
+      paragraphs[i].innerHTML = paragraphs[paragraphs.length - 1].innerHTML;
+    }
+  </script> -->
+
+</body>
+
+</html>
