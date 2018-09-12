@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Workshop: Attributes</title>
+</head>
+
+<body>
+
+  <img src="https://static.wixstatic.com/media/f4461b_83457ca5dd844c71a760d36e6583d0ff.png/v1/fill/w_168,h_168,al_c,usm_0.66_1.00_0.01/f4461b_83457ca5dd844c71a760d36e6583d0ff.png">
+  <a href="http://www.themostamazingwebsiteontheinternet.com/">The Best Website Ever</a>
+  <button>Click me!</button>
+  <button class="this-one">Click me!</button>
+
+  <!-- You can work in the html or in a separate js file. Like:
+    <script>
+      Disable the second button.
+      Replace its text with 'Don't click me!'.
+    </script>
+    OR
+    <script src="attribute-1.js"></script> -->
+
+  <script>
+    let imgTag = document.querySelector('img');
+    console.log(imgTag)
+    imgTag.setAttribute('src', 'https://beano-uploads-production.imgix.net/store/5439c86bb96b5d674f5489ed11f9a9ee27d089b5f0ccde3a89b4bf090563?auto=compress&w=752&h=423&format=jpg&frame=1')
+    imgTag.setAttribute('style', 'width:150px;height:100px')
+    document.querySelector('a').setAttribute('href', 'https://www.greenfoxacademy.com/')
+    let secondButton = document.getElementsByClassName('this-one')[0];
+    secondButton.disabled = true;
+    secondButton.innerText = `Don't kill me!`
+
+
+  </script>
+</body>
+
+</html>
