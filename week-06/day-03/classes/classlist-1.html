@@ -42,8 +42,8 @@
     allP[0].classList.add('red')
 
     for (let i = 0; i < allP.length; i++) {
-      if (allP[i].classList.value === 'balloon') {
-        allP[i].setAttribute('style', 'border-radius: 10%;');
+      if (allP[i].classList.contains('balloon')) {
+        allP[i].style.borderRadius = '15%';
       };
 
     }
