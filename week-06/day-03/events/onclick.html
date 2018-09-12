@@ -32,23 +32,22 @@
 
     buttonTag.onclick = function () {
       if (buttonTag.innerText === 'Party') {
-        buttonTag.innerText = 'Party is ON'
-        buttonTag.style.backgroundColor = 'blue'
+        buttonTag.setAttribute('style', 'background-image: url(https://media.giphy.com/media/4c4jQPdVv381G/giphy.gif)')
+        buttonTag.style.height = '300px';
+        buttonTag.style.width = '500px';
+        buttonTag.innerText = ''
+
       } else {
         buttonTag.innerText = 'Party'
+        buttonTag.setAttribute('style', 'background-image:')
         buttonTag.style.backgroundColor = 'tomato'
+        buttonTag.style.color = 'white';
       }
     }
 
 
   </script>
 
-  <!-- You can work in the html or in a separate js file. Like:
-    <script>
-      Turn the party on and off by clicking the button. (the whole page)
-    </script>
-    OR
-    <script src="events-1.js"></script> -->
 </body>
 
 </html>
