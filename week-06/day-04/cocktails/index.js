@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
     title: 'Cocktails',
     welcome: 'Welcome to my bar',
     cocktails,
-
+    alcoholList
   });
 })
 
@@ -38,6 +38,7 @@ app.get('/:alcohol', (req, res) => {
     welcome: 'Welcome to the bar',
     ingredient: req.params.alcohol,
     cocktails: filteredByType,
+    alcoholList,
 
   });
 })

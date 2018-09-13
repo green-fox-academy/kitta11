@@ -15,17 +15,27 @@
   <h1>
     <%=welcome%>
   </h1>
-  <ul></ul>
+  <div class='alcoholList'>
+    <ul class='alcohols'>
+      <li class='alcohol'> <a href="/">ALL</a></li>
+      <% alcoholList.forEach(elem => { %>
 
-  <ul>
-    <% cocktails.forEach(elem => { %>
-    <li>
-      <%= elem['name'] %>
-    </li>
-    <%  }) 
-  %>
+      <li class='alcohol'> <a href="/<%= elem %>">
+          <%= elem %></a></li>
+      <%  })   %>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <% cocktails.forEach(elem => { %>
+      <li>
+        <%= elem['name'] %>
+      </li>
+      <%  }) 
+    %>
 
-  </ul>
+    </ul>
+  </div>
 
 </body>
 

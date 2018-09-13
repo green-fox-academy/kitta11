@@ -6,9 +6,28 @@
 
 html, body {
   background: rgb(240, 240, 228);
+  min-width: 500px;
 }
 
 h1 {
   color: tomato;
-  
+}
+
+.alcoholList {
+  display: flex;
+  width: 100%;
+}
+
+.alcohols {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  list-style-type: none;
+}
+
+.alcohol {
+  background: tomato;
+  width: 60px;
+  margin-right: 2px;
+  text-align: center;
 }
