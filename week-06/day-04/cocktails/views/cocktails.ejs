@@ -9,34 +9,53 @@
     <%=title%>
   </title>
   <link rel="stylesheet" type="text/css" href="./../assets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
-  <h1>
-    <%=welcome%>
-  </h1>
-  <div class='alcoholList'>
-    <ul class='alcohols'>
-      <li class='alcohol'> <a href="/">ALL</a></li>
-      <% alcoholList.forEach(elem => { %>
+  <div class="wrapper">
+    <h1>
+      <%=welcome%>
+    </h1>
+    <div class='alcoholList'>
+      <ul class='alcohols'>
+        <li class='alcohol'> <a href="/">ALL</a></li>
+        <% alcoholList.forEach(elem => { %>
 
-      <li class='alcohol'> <a href="/<%= elem %>">
-          <%= elem %></a></li>
-      <%  })   %>
-    </ul>
+        <li class='alcohol'> <a href="/<%= elem %>">
+            <%= elem %></a></li>
+        <%  })   %>
+      </ul>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 10px">
+
+      <div class="table-row header">
+        <div class="text">Cocktail</div>
+        <div class="num">Price</div>
+      </div>
+
+      <div class="table-row">
+        <% cocktails.forEach(elem => { %>
+
+        <div class="text">
+          <%= elem['name'] %>
+          <% if (!elem['isAlcoholic']) {%>
+          (non-alcoholic)
+          <% } %>
+          <br>
+          <%= elem['contains'] %>
+        </div>
+        <div class="num">
+          <%= elem['price'] %>
+        </div>
+        <%  }) 
+      %>
+
+      </div>
+    </div>
   </div>
-  <div>
-    <ul>
-      <% cocktails.forEach(elem => { %>
-      <li>
-        <%= elem['name'] %>
-      </li>
-      <%  }) 
-    %>
-
-    </ul>
   </div>
-
 </body>
 
 </html>

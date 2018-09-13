@@ -33,6 +33,7 @@ app.get('/:alcohol', (req, res) => {
   let filteredByType = cocktails.filter(cocktail => {
     return cocktail.contains.includes(req.params.alcohol)
   })
+  
   res.render('cocktails', {
     title: 'Cocktails',
     welcome: 'Welcome to the bar',
