@@ -21,28 +21,28 @@ app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 
 app.get('/', (req, res) => {
-  res.render('cocktails', {
-    title: 'Cocktails',
-    welcome: 'Welcome to my bar',
-    cocktails,
-    alcoholList
-  });
+  if (req.query.alcohol) {
+    let filteredByType = cocktails.filter(cocktail => {
+      return cocktail.contains.includes(req.query.alcohol)
+    });
+    res.render('cocktails', {
+      title: 'Cocktails',
+      welcome: 'Welcome to the bar',
+      ingredient: req.query.alcohol,
+      cocktails: filteredByType,
+      alcoholList,
+    });
+  } else {
+    res.render('cocktails', {
+      title: 'Cocktails',
+      welcome: 'Welcome to my bar',
+      cocktails,
+      alcoholList,
+
+    })
+  }
 })
 
-app.get('/:alcohol', (req, res) => {
-  let filteredByType = cocktails.filter(cocktail => {
-    return cocktail.contains.includes(req.params.alcohol)
-  })
-  
-  res.render('cocktails', {
-    title: 'Cocktails',
-    welcome: 'Welcome to the bar',
-    ingredient: req.params.alcohol,
-    cocktails: filteredByType,
-    alcoholList,
-
-  });
-})
 
 app.listen(PORT, () => {
   console.log(`your server is running like an angel on port: ${PORT}`)
