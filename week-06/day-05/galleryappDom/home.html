@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gallery with DOM
+  </title>
+  <link rel="stylesheet" type="text/css" href="./assets/style.css">
+
+</head>
+
+
+<body>
+  <div class="mainwrapper">
+    <div class="welcome">
+      <h1>Welcome</h1>
+    </div>
+    <div class="showroom">
+      <div class="left">
+        <button id="leftbutton" onclick='leftClick()'>
+          <img src="./assets/imgs/if_arrow-left-01_186410.png" alt="Move left">
+        </button>
+      </div>
+      <div class="imagewrapper">
+        <img id="currentimg" class="galleryitem">
+        <div class="infocontent">
+          <div id="currentimgTitle"></div>
+          <div id="currentimgDesc"></div>
+
+        </div>
+      </div>
+      <div class="right">
+        <button id="rightbutton" onclick=rightClick()>
+          <img src="./assets/imgs/if_arrow-right-01_186409.png" alt="Move right">
+        </button>
+      </div>
+    </div>
+
+    <div class="nav">
+
+    </div>
+  </div>
+</body>
+<script src="./index.js"></script>
+
+</html>
