@@ -14,7 +14,57 @@
 
 
 <body>
-  <h1>Welcome</h1>
+  <div class="mainwrapper">
+    <div class="welcome">
+      <h1>Welcome</h1>
+    </div>
+    <div class="showroom">
+      <div class="left">
+        <button id="leftbutton" onclick='leftClick()'>
+          <img src="./../assets/imgs/if_arrow-left-01_186410.png" alt="Move left">
+        </button>
+      </div>
+      <div id="<%=currentimgID%>" class="imagewrapper">
+        <img class="galleryitem" src="<%=selectedimg['src']%>" alt="<%=selectedimg['imgtitle']%>">
+        <div class="infocontent">
+          <div class="title">
+            <%=selectedimg['imgtitle']%>
+          </div>
+          <div class="desc">
+            <%=selectedimg['imgdesc']%>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <button id="rightbutton" onclick='rightClick()'>
+          <img src="./../assets/imgs/if_arrow-right-01_186409.png" alt="Move right">
+        </button>
+      </div>
+    </div>
+
+    <div class="nav">
+      <% imagelib.forEach(elem => {%>
+      <!-- <a href="#<%=elem['imgID']%>"> -->
+      <img class="thumbnail" src="<%=elem['src']%>" alt="
+        <%=elem['imgtitle']%>">
+      <!-- </a> -->
+      <%})%>
+    </div>
+  </div>
 </body>
+
+<script>
+  let counter = 0;
+  function rightClick() {
+    if (counter === 0) {
+      let currentimgID = imagelib[0].imgID;
+    } else if (counter < imagelib.length + 1) {
+      counter++
+      let currentimgID = imagelib[counter].imgID;
+    } else {
+      alert('you have reached the end of the library')
+    }
+  };
+</script>
 
 </html>
