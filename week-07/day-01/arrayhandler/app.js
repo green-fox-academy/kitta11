@@ -11,34 +11,31 @@ app.get('/', (req, res) => {
 })
 
 app.post('/arrays', jsonParser, (req, res) => {
-  let todo = req.body.what;
-  let numberarray = req.body.numbers;
-
-  if (!todo || !numberarray) {
+  if (!req.body.what || !req.body.numbers) {
     res.json({
       error: 'Please provide what to do with the numbers!'
     })
   } else {
-    let summedArray = 0;
-    numberarray.forEach(element => {
-      summedArray += element;
+    let sumofArray = 0;
+    req.body.numbers.forEach(element => {
+      sumofArray += element;
     });
-    let multipledArray = 1;
-    numberarray.forEach(element => {
-      multipledArray *= element;
+    let multiplOfArray = 1;
+    req.body.numbers.forEach(element => {
+      multiplOfArray *= element;
     });
-    let doubledArray = numberarray.map(element => {
+    let doubledArray = req.body.numbers.map(element => {
       return element * 2;
     });
-    if (todo === 'sum') {
+    if (req.body.what === 'sum') {
       res.json({
-        "result": summedArray,
+        "result": sumofArray,
       })
-    } else if (todo === 'multiply') {
+    } else if (req.body.what === 'multiply') {
       res.json({
-        "result": multipledArray,
+        "result": multiplOfArray,
       })
-    } else if (todo === 'double') {
+    } else if (req.body.what === 'double') {
       res.json({
         "result": doubledArray,
       })
