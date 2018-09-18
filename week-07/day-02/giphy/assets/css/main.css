@@ -16,7 +16,8 @@ body {
 }
 
 .listview {
-  width: 150px;
-  height: auto;
+  width: 250px;
+  height: calc(150px/4*3);
+  object-fit: cover;
   border: 2px solid white;
 }

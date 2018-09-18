@@ -3,7 +3,7 @@ window.onload = () => {
   const http = new XMLHttpRequest();
   const parentDiv = document.querySelector('#giphylist');
 
-  http.open('GET', `https://api.giphy.com/v1/gifs/search?api_key=MLozqAHGCLAaqAVavXZWPdmpf1w0wbOO&q=sloth&limit=16&offset=0&rating=G&lang=en`, true);
+  http.open('GET', `${host}/api/giphy/kitten`, true);
   console.log(http);
 
   http.onload = () => {
@@ -13,10 +13,9 @@ window.onload = () => {
       source.forEach((elem) => {
         let gifImg = document.createElement('img');
         gifImg.classList.add('listview')
-        gifImg.setAttribute('src', elem.embed_url)
+        gifImg.setAttribute('src', elem.images.downsized_medium.url)
         gifImg.setAttribute('alt', elem.id)
         parentDiv.appendChild(gifImg)
-
       })
     }
   };
