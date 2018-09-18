@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+}
+
+#giphylist {
+  display: flex;
+  flex-wrap: wrap;
+  background: lightcyan;
+  width: 100%;
+}
+
+.listview {
+  width: 150px;
+  height: auto;
+  border: 2px solid white;
+}
