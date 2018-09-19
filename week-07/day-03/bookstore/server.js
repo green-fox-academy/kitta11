@@ -33,25 +33,41 @@ app.get('/api/books', (req, res) => {
   let catQ = req.query.category;
   let pltQ = req.query.plt;
   let pgtQ = req.query.pgt;
+  let pubExt = `pub_name LIKE "%${pubQ}%"`;
+  let catExt = `cate_descrip LIKE "${catQ}"`;
+  let pltExt = `book_price<${pltQ}`;
+  let pgtExt = `book_price>${pgtQ}`;
 
   if (pubQ && !catQ && !pltQ && !pgtQ) {
-    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%'`;
-    basicquery = basicquery.concat(queryExtension);
+    basicquery = `${basicquery} WHERE ${pubExt}`;
   } else if (!pubQ && catQ && !pltQ && !pgtQ) {
-    let queryExtension = ` WHERE cate_descrip LIKE '${catQ}'`;
-    basicquery = basicquery.concat(queryExtension);
+    basicquery = `${basicquery} WHERE ${catExt}`;
+  } else if (!pubQ && !catQ && pltQ && !pgtQ) {
+    basicquery = `${basicquery} WHERE ${pltExt}`;
+  } else if (!pubQ && !catQ && !pltQ && pgtQ) {
+    basicquery = `${basicquery} WHERE ${pgtExt}`;
   } else if (pubQ && catQ && !pltQ && !pgtQ) {
-    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}'`;
-    basicquery = basicquery.concat(queryExtension);
+    basicquery = `${basicquery} WHERE ${pubExt} AND ${catExt}`;
+  } else if (pubQ && !catQ && pltQ && !pgtQ) {
+    basicquery = `${basicquery} WHERE ${pubExt} AND ${pltExt}`;
+  } else if (pubQ && !catQ && !pltQ && pgtQ) {
+    basicquery = `${basicquery} WHERE ${pubExt} AND ${pgtExt}`;
+  } else if (!pubQ && catQ && pltQ && !pgtQ) {
+    basicquery = `${basicquery} WHERE ${catExt} AND ${pltExt}`;
+  } else if (!pubQ && catQ && !pltQ && pgtQ) {
+    basicquery = `${basicquery} WHERE ${catExt} AND ${pgtExt}`;
+  } else if (!pubQ && !catQ && pltQ && pgtQ) {
+    basicquery = `${basicquery} WHERE ${pltExt} AND ${pgtExt}`;
   } else if (pubQ && catQ && pltQ && !pgtQ) {
-    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}' AND book_price<${pltQ}`;
-    basicquery = basicquery.concat(queryExtension);
+    basicquery = `${basicquery} WHERE ${pubExt} AND ${catExt} AND ${pltExt}`;
   } else if (pubQ && catQ && !pltQ && pgtQ) {
-    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}' AND book_price>${pgtQ}`;
-    basicquery = basicquery.concat(queryExtension);
+    basicquery = `${basicquery} WHERE ${pubExt} AND ${catExt} AND ${pgtExt}`;
+  } else if (pubQ && !catQ && pltQ && pgtQ) {
+    basicquery = `${basicquery} WHERE ${pubExt} AND ${pltQ} AND ${pgtExt}`;
+  } else if (!pubQ && catQ && pltQ && pgtQ) {
+    basicquery = `${basicquery} WHERE ${catExt} AND ${pltQ} AND ${pgtExt}`;
   } else if (pubQ && catQ && pltQ && pgtQ) {
-    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}' AND book_price>${pgtQ} AND book_price<${pltQ}`;
-    basicquery = basicquery.concat(queryExtension);
+    basicquery = `${basicquery} WHERE ${pubExt} AND ${catExt} AND ${pltExt} AND ${pgtExt}`;
   }
 
   connection.query(basicquery, (err, results) => {
