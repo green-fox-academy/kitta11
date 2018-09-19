@@ -28,28 +28,43 @@ connection.connect(function (err) {
 });
 
 app.get('/api/books', (req, res) => {
-  connection.query(`select book_name, aut_name, pub_name, cate_descrip, book_price FROM book_mast INNER JOIN author ON book_mast.aut_id = author.aut_id INNER JOIN publisher ON book_mast.pub_id = publisher.pub_id INNER JOIN category ON book_mast.cate_id = category.cate_id;`, (err, results) => {
+  let basicquery = `select book_name, aut_name, pub_name, cate_descrip, book_price FROM book_mast INNER JOIN author ON book_mast.aut_id = author.aut_id INNER JOIN publisher ON book_mast.pub_id = publisher.pub_id INNER JOIN category ON book_mast.cate_id = category.cate_id`
+  let pubQ = req.query.publisher;
+  let catQ = req.query.category;
+  let pltQ = req.query.plt;
+  let pgtQ = req.query.pgt;
+
+  if (pubQ && !catQ && !pltQ && !pgtQ) {
+    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%'`;
+    basicquery = basicquery.concat(queryExtension);
+  } else if (!pubQ && catQ && !pltQ && !pgtQ) {
+    let queryExtension = ` WHERE cate_descrip LIKE '${catQ}'`;
+    basicquery = basicquery.concat(queryExtension);
+  } else if (pubQ && catQ && !pltQ && !pgtQ) {
+    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}'`;
+    basicquery = basicquery.concat(queryExtension);
+  } else if (pubQ && catQ && pltQ && !pgtQ) {
+    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}' AND book_price<${pltQ}`;
+    basicquery = basicquery.concat(queryExtension);
+  } else if (pubQ && catQ && !pltQ && pgtQ) {
+    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}' AND book_price>${pgtQ}`;
+    basicquery = basicquery.concat(queryExtension);
+  } else if (pubQ && catQ && pltQ && pgtQ) {
+    let queryExtension = ` WHERE pub_name LIKE '%${pubQ}%' AND cate_descrip LIKE '${catQ}' AND book_price>${pgtQ} AND book_price<${pltQ}`;
+    basicquery = basicquery.concat(queryExtension);
+  }
+
+  connection.query(basicquery, (err, results) => {
     if (err) {
       console.log(err.toString());
       res.status(500).send('Database error');
       return;
     }
-    console.log(results);
     res.send(results);
   })
-});
 
-// app.get('/api/books', (req, res) => {
-//   connection.query(`select book_name, aut_name, pub_name, cate_descrip, book_price FROM book_mast INNER JOIN author ON book_mast.aut_id = author.aut_id INNER JOIN publisher ON book_mast.pub_id = publisher.pub_id INNER JOIN category ON book_mast.cate_id = category.cate_id;`), (err, results) => {
-//     if (err) {
-//       console.log(err.toString());
-//       res.status(500).send('Database error');
-//       return;
-//     }
-//     console.log(results);
-//     res.send(results);
-//   }
-// })
+})
+
 
 app.listen(PORT, () => {
   console.log(`el server fantastico esta corriendo en el port: ${PORT}`);

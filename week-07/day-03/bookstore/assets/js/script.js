@@ -4,7 +4,7 @@ window.onload = () => {
   const http = new XMLHttpRequest();
   const tablebody = document.querySelector('tbody');
 
-  http.open('GET', `${host}/api/books/`, true);
+  http.open('GET', `${host}/api/books`, true);
   console.log(http);
 
   http.onload = () => {
