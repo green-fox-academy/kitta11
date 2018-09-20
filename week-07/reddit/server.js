@@ -54,6 +54,17 @@ const insertPost = (title, url) => {
   })
 }
 
+const deletePost = (id) => {
+  connection.query(`DELETE from posts WHERE id = ${id}`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    } else {
+      console.log(`Data were deleted from the database: ${result}`)
+    }
+  })
+}
+
 
 app.post('/api/posts/', jsonParser, (req, res) => {
   if (req.body.title && req.body.url) {
@@ -107,9 +118,51 @@ app.put('/api/posts/:id/upvote', jsonParser, (req, res) => {
   })
 })
 
-app.put('/api/posts/:id/downvote', jsonParser, (req, res) => {
+app.put('/api/posts/:id', jsonParser, (req, res) => {
   let post_id = req.params.id;
-  connection.query(`UPDATE posts SET score = score-1 WHERE id=${post_id}`, (err, result) => {
+  let title = req.body.title;
+  let url = req.body.url;
+  let queryupdate = `UPDATE posts SET `;
+  let querycond = `WHERE id=${post_id}`;
+  let setTitle = `title = '${title}'`;
+  let setUrl = `url = '${url}'`;
+  let query = {};
+
+  if (title && url) {
+    query = `${queryupdate}${setTitle}, ${setUrl} ${querycond}`;
+  } else if (title && !url) {
+    query = `${queryupdate}${setTitle} ${querycond}`;
+  } else if (!title && url) {
+    query = `${queryupdate}${setUrl} ${querycond}`;
+  }
+  connection.query(query, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+  })
+
+  let newRecord = {};
+  connection.query(`SELECT * from posts WHERE id LIKE '${post_id}'`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+    newRecord = result[0];
+    console.log(newRecord)
+    res.json({
+      "id": newRecord.id,
+      "title": newRecord.title,
+      "url": newRecord.url,
+      "timestamp": newRecord.timestamp,
+      "score": newRecord.score,
+    });
+  })
+})
+
+app.put('/api/posts/:id/upvote', jsonParser, (req, res) => {
+  let post_id = req.params.id;
+  connection.query(`UPDATE posts SET score = score+1 WHERE id=${post_id}`, (err, result) => {
     if (err) {
       console.log(err.toString());
       return;
@@ -132,6 +185,29 @@ app.put('/api/posts/:id/downvote', jsonParser, (req, res) => {
     });
   })
 })
+
+
+app.delete('/api/posts/:id', jsonParser, (req, res) => {
+  let post_id = req.params.id;
+  let newRecord = {};
+  connection.query(`SELECT * from posts WHERE id LIKE '${post_id}'`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+    newRecord = result[0];
+    deletePost(post_id);
+    console.log(newRecord)
+    res.json({
+      "id": newRecord.id,
+      "title": newRecord.title,
+      "url": newRecord.url,
+      "timestamp": newRecord.timestamp,
+      "score": newRecord.score,
+    });
+  })
+}
+)
 
 app.listen(PORT, () => {
   console.log(`el server esta corriendo en el port ${PORT}`)
