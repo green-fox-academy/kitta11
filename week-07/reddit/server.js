@@ -54,6 +54,7 @@ const insertPost = (title, url) => {
   })
 }
 
+
 app.post('/api/posts/', jsonParser, (req, res) => {
   if (req.body.title && req.body.url) {
     let title = req.body.title;
@@ -80,9 +81,57 @@ app.post('/api/posts/', jsonParser, (req, res) => {
   }
 })
 
-//insertPost(`I am a test post, please forgive me`, `http://www.index.hu`);
+app.put('/api/posts/:id/upvote', jsonParser, (req, res) => {
+  let post_id = req.params.id;
+  connection.query(`UPDATE posts SET score = score+1 WHERE id=${post_id}`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+  })
+  let newRecord = {};
+  connection.query(`SELECT * from posts WHERE id LIKE '${post_id}'`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+    newRecord = result[0];
+    console.log(newRecord)
+    res.json({
+      "id": newRecord.id,
+      "title": newRecord.title,
+      "url": newRecord.url,
+      "timestamp": newRecord.timestamp,
+      "score": newRecord.score,
+    });
+  })
+})
 
-
+app.put('/api/posts/:id/downvote', jsonParser, (req, res) => {
+  let post_id = req.params.id;
+  connection.query(`UPDATE posts SET score = score-1 WHERE id=${post_id}`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+  })
+  let newRecord = {};
+  connection.query(`SELECT * from posts WHERE id LIKE '${post_id}'`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+    newRecord = result[0];
+    console.log(newRecord)
+    res.json({
+      "id": newRecord.id,
+      "title": newRecord.title,
+      "url": newRecord.url,
+      "timestamp": newRecord.timestamp,
+      "score": newRecord.score,
+    });
+  })
+})
 
 app.listen(PORT, () => {
   console.log(`el server esta corriendo en el port ${PORT}`)
