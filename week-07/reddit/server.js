@@ -4,6 +4,9 @@ const app = express();
 const PORT = 3000;
 const path = require('path');
 
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -39,6 +42,47 @@ app.get('/api/posts', (req, res) => {
     })
   })
 })
+
+const insertPost = (title, url) => {
+  connection.query(`INSERT INTO posts (title, url) VALUES ('${title}', '${url}')`, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    } else {
+      console.log(`Data were inserted into the database: ${result}`)
+    }
+  })
+}
+
+app.post('/api/posts/', jsonParser, (req, res) => {
+  if (req.body.title && req.body.url) {
+    let title = req.body.title;
+    let url = req.body.url;
+    insertPost(title, url);
+    let newRecord = {};
+    connection.query(`SELECT * from posts WHERE title LIKE '${title}'`, (err, result) => {
+      if (err) {
+        console.log(err.toString());
+        return;
+      }
+      newRecord = result[0];
+      console.log(newRecord)
+      res.json({
+        "id": newRecord.id,
+        "title": newRecord.title,
+        "url": newRecord.url,
+        "timestamp": newRecord.timestamp,
+        "score": newRecord.score,
+      });
+    })
+  } else {
+    console.log(`data was not provided`)
+  }
+})
+
+//insertPost(`I am a test post, please forgive me`, `http://www.index.hu`);
+
+
 
 app.listen(PORT, () => {
   console.log(`el server esta corriendo en el port ${PORT}`)
