@@ -66,7 +66,7 @@ const deletePost = (id) => {
 }
 
 
-app.post('/api/posts/', jsonParser, (req, res) => {
+app.post('/api/posts', jsonParser, (req, res) => {
   if (req.body.title && req.body.url) {
     let title = req.body.title;
     let url = req.body.url;
@@ -101,7 +101,7 @@ app.put('/api/posts/:id/upvote', jsonParser, (req, res) => {
     }
   })
   let newRecord = {};
-  connection.query(`SELECT * from posts WHERE id LIKE '${post_id}'`, (err, result) => {
+  connection.query(`SELECT * from posts WHERE id=${post_id}`, (err, result) => {
     if (err) {
       console.log(err.toString());
       return;
@@ -143,7 +143,7 @@ app.put('/api/posts/:id', jsonParser, (req, res) => {
   })
 
   let newRecord = {};
-  connection.query(`SELECT * from posts WHERE id LIKE '${post_id}'`, (err, result) => {
+  connection.query(`SELECT * from posts WHERE id=${post_id}`, (err, result) => {
     if (err) {
       console.log(err.toString());
       return;
@@ -160,9 +160,9 @@ app.put('/api/posts/:id', jsonParser, (req, res) => {
   })
 })
 
-app.put('/api/posts/:id/upvote', jsonParser, (req, res) => {
+app.put('/api/posts/:id/downvote', jsonParser, (req, res) => {
   let post_id = req.params.id;
-  connection.query(`UPDATE posts SET score = score+1 WHERE id=${post_id}`, (err, result) => {
+  connection.query(`UPDATE posts SET score = score-1 WHERE id=${post_id}`, (err, result) => {
     if (err) {
       console.log(err.toString());
       return;
