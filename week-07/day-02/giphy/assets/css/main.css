@@ -2,22 +2,56 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Oswald', sans-serif;
+  margin: 0 auto;
 }
 
 body {
   width: 100vw;
+  margin: 0 auto;
 }
 
 #giphylist {
   display: flex;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  background: lightcyan;
+  background: rgb(102, 86, 86);
   width: 100%;
 }
 
+#gifImgCont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#gifTitle {
+  background: rgb(102, 86, 86);
+  height: 25px;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
 .listview {
-  width: 250px;
-  height: calc(150px/4*3);
+  width: 360px;
+  height: calc(360px/4*3);
   object-fit: cover;
-  border: 2px solid white;
+  border: 2px solid rgb(160, 139, 139);
+}
+
+#selector button {
+  height: 30px;
+  width: 100px;
+  background: white;
+  border-radius: 16px;
+  color: rgb(102, 86, 86);
+  font-size: 16px;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#selector {
+  background: rgb(102, 86, 86);
 }
