@@ -52,3 +52,40 @@ tape.test('find highest card', t => {
   t.deepEqual(result, source.findHighestCard(cardSet));
   t.end();
 });
+
+tape.test('show me the pairs case 1pair', t => {
+  let cardSet = [[2, 0], [0, 5], [1, 5], [0, 2], [0, 11]];
+  let result = [[0, 5], [1, 5]];
+  t.deepEqual(result, source.showmethePairs(cardSet));
+  t.end();
+});
+
+tape.test('show me the pairs case 2pairs', t => {
+  let cardSet = [[2, 0], [0, 5], [1, 5], [0, 11], [2, 11]];
+  let result = [[0, 5], [1, 5], [0, 11], [2, 11]];
+  t.deepEqual(result, source.showmethePairs(cardSet));
+  t.end();
+});
+
+tape.test('show me the pairs case noPair', t => {
+  let cardSet = [[2, 0], [0, 5], [1, 3], [0, 11], [2, 10]];
+  let result = false;
+  t.deepEqual(result, source.showmethePairs(cardSet));
+  t.end();
+});
+
+tape.test('show me the drill case we have a drill', t => {
+  let cardSetDrill = [[2, 0], [0, 5], [1, 5], [2, 5], [2, 11]];
+  let result = [[0, 5], [1, 5], [2, 5]];
+  t.deepEqual(result, source.showmetheDrill(cardSetDrill));
+  t.end();
+});
+
+tape.test('show me the drill - case no drill', t => {
+  let cardSetNodrill = [[2, 0], [0, 5], [1, 3], [0, 11], [2, 10]];
+  let result = false;
+  t.deepEqual(result, source.showmetheDrill(cardSetNodrill));
+  t.end();
+});
+
+

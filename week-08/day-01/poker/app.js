@@ -34,6 +34,7 @@ const tellmeTheIndex = (arrayBig, arraySmall) => {
   return resultArray;
 }
 
+//finding the highest value card from a set
 const findHighestCard = (array) => {
   let highestcard = array[0];
   array.forEach(item => {
@@ -43,6 +44,48 @@ const findHighestCard = (array) => {
   })
   return highestcard;
 }
+
+const showmethePairs = (array) => {
+  let pairs = [];
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (i !== j && array[i][1] === array[j][1]) {
+        pairs.push(array[i]);
+      }
+    }
+  }
+  if (pairs.length > 0) { return pairs; } else { return false }
+}
+
+const turnmyHandtoObj = (array) => {
+  let cardObj = {};
+  array.forEach(elem => {
+    if (!cardObj[elem[1]]) {
+      cardObj[elem[1]] = [elem];
+    } else {
+      cardObj[elem[1]].push(elem)
+    }
+  })
+  return cardObj;
+}
+
+const showmetheDrill = (cardObj) => {
+  let keyArray = Object.keys(cardObj);
+  let drill = null;
+  keyArray.forEach(elem => {
+    if ((cardObj[elem]).length === 3) {
+      drill = cardObj[elem];
+    } else {
+      return false;
+    }
+  });
+  return drill;
+};
+
+
+
+let cardSet = [[2, 7], [0, 7], [1, 5], [1, 7], [0, 11]];
+console.log(showmetheDrill(turnmyHandtoObj(cardSet)));
 
 
 
@@ -60,4 +103,5 @@ const isValidHand = (inputArray) => {
 }
 
 
-module.exports = { isItemInArray, tellmeTheIndex, isValidHand, findHighestCard }
+
+module.exports = { isItemInArray, tellmeTheIndex, isValidHand, findHighestCard, showmethePairs, showmetheDrill }
