@@ -48,27 +48,31 @@
       return num !== 1 && num !== 0;
     }
     let sectionDiv = document.querySelector('section');
+    let btnTag = document.createElement('button');
+    sectionDiv.appendChild(btnTag);
+    btnTag.classList.add('non-prime');
 
-    const createBtn = (index) => {
+
+    const colourBtn = (index) => {
       if (index > 100) {
         clearInterval(addingBtns)
       } else {
-        let btnTag = document.createElement('button');
         btnTag.innerText = index;
-        if (isPrime(index)) {
+        if (isPrime(index) && btnTag.classList.contains('non-prime')) {
+          btnTag.classList.remove('non-prime');
           btnTag.classList.add('prime');
-        } else {
+        } else if (btnTag.classList.contains('prime') && !isPrime(index)) {
+          btnTag.classList.remove('prime');
           btnTag.classList.add('non-prime');
         }
-        sectionDiv.appendChild(btnTag);
       }
     }
 
     let addingBtns = (j) => {
       setInterval(() => {
-        createBtn(j);
+        colourBtn(j);
         j++;
-      }, 100);
+      }, 300);
     }
 
     addingBtns(1);
