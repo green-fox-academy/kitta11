@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Click three times</title>
+</head>
+
+<body>
+  <button>Click me</button>
+  <p></p>
+
+  <script>
+
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+      let loadMoment = event.timeStamp;
+      let btn = document.querySelector('button');
+      let p = document.querySelector('p');
+      let counter = 0;
+
+      btn.addEventListener('click', (e) => {
+        let clickMoment = e.timeStamp
+        counter++
+        if (counter === 3 && (clickMoment - loadMoment) > 5000) {
+          p.innerText = `${Math.floor((clickMoment - loadMoment) / 1000)} seconds elapsed and clicked ${counter} times`;
+        }
+        // else {
+        //   p.innerText = `${Math.floor((clickMoment - loadMoment) / 1000)} seconds elapsed only and clicked ${counter} times`
+        // }
+
+      })
+
+    });
+
+  </script>
+</body>
+
+
+</html>
