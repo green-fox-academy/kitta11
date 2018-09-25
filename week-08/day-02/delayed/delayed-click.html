@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Delayed click</title>
+</head>
+
+<body>
+  <button>Click me</button>
+  <p>Click the button to see the timeout setup</p>
+
+  <script>
+    let btn = document.querySelector('button');
+    console.log(btn);
+    let p = document.querySelector('p');
+    console.log(p)
+
+    btn.addEventListener('click', (e) => {
+      let timeoutperiod = 2;
+      setTimeout(function () {
+        p.innerText = `${timeoutperiod} seconds ellapsed`;
+      }, (timeoutperiod * 1000));
+
+    })
+
+  </script>
+</body>
+
+
+</html>
