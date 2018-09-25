@@ -7,13 +7,19 @@
 // If you press the "make candy rain" button, the candy generation should speed up 10x
 
 const createcandyBtn = document.querySelector('.create-candies');
-let candyNum = document.querySelector('.candies');
+const candyNum = document.querySelector('.candies');
 let value = Number(candyNum.innerText);
-const buyLollyBtn = document.querySelector('.buy-lollypops');
-let oneLolly = '🍭'
 
-let lollyNum = document.querySelector('.lollypops');
+const buyLollyBtn = document.querySelector('.buy-lollypops');
+const oneLolly = '🍭'
+const lollyNum = document.querySelector('.lollypops');
 let actualLolly = lollyNum.innerText;
+
+const candyRainBtn = document.querySelector('.candy-machine');
+
+
+const speedrateTag = document.querySelector('.speed');
+
 
 
 const addCandy = () => {
@@ -26,12 +32,23 @@ const addCandy = () => {
   }
 }
 
+const autoCandy = (speed) => {
+  speedrateTag.innerText = 1 / speed;
+  setInterval(() => {
+    addCandy();
+  }, (speed * 1000));
+}
+
 const buyLolly = () => {
   actualLolly += oneLolly;
+  let actualLollyValue = actualLolly.length / 2;
   lollyNum.innerText = actualLolly;
   value -= 100;
   candyNum.innerText = value;
-
+  if (actualLollyValue >= 10) {
+    console.log('extra candy generation started')
+    autoCandy(1);
+  }
 }
 
 createcandyBtn.addEventListener('click', addCandy)
@@ -44,5 +61,12 @@ buyLollyBtn.addEventListener('click', () => {
   }
 })
 
+const candyRain = () => {
+  console.log(1 / (Number(speedrateTag.innerText)))
+  autoCandy(1 / (Number(speedrateTag.innerText)) / 10)
+
+}
+
+candyRainBtn.addEventListener('click', candyRain);
 
 
