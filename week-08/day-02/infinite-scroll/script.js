@@ -9,8 +9,8 @@ const getRandomColor = () => {
 const container = document.querySelector('#container');
 const scrollThreshold = 300;
 
-const createTenDiv = () => {
-  for (let i = 0; i < 10; i++) {
+const createXDiv = (num) => {
+  for (let i = 0; i < num; i++) {
     let newDiv = document.createElement('div');
     container.appendChild(newDiv);
     newDiv.style.background = getRandomColor();
@@ -21,6 +21,13 @@ const createTenDiv = () => {
   endDiv.innerText = 'this is the end of the div generation'
 }
 
-createTenDiv();
+createXDiv(3);
 
-window.addEventListener('scroll', createTenDiv)
+//window.addEventListener('scroll', createTenDiv)
+window.addEventListener('scroll', (e) => {
+  let top = e.srcElement.scrollingElement.scrollTop
+  console.log(top)
+  if (top < scrollThreshold) {
+    createXDiv(4);
+  }
+})
