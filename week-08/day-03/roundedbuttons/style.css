@@ -1,0 +1,55 @@
+body {
+  /* background: #2F315F; */
+  background: white;
+}
+
+button {
+  width: calc(2*150px);
+  height: calc(2*60px);
+  border-radius: 5px;
+  color: rgba(252, 252, 252, 0.7);
+  border: none;
+  margin: 10px 5px;
+  /* box-shadow: 1px 1px 15px 1px black inset, -1px -1px 15px 1px black inset; */
+}
+
+button:hover {
+  filter: brightness(110%);
+}
+
+button:focus {
+  filter: brightness(70%);
+  outline: 0;
+  border: none;
+}
+
+.blue {
+  background: linear-gradient(#273A6B, rgba(89, 128, 206, 0.8));
+  box-shadow: 0px 5px 2px 1px #273A6B, 0px -5px 2px 1px rgba(89, 128, 206, 0.8);
+}
+
+.red {
+  background: linear-gradient( rgb(212, 70, 60), #CE3E33);
+  box-shadow: 2px 6px 2px 1px rgb(131, 41, 34);
+}
+
+.green {
+  background: radial-gradient(rgb(68, 226, 131), #27AA5B);
+  box-shadow: 2px 6px 2px 1px rgb(31, 129, 70);
+}
+
+.light {
+  background: radial-gradient(rgba(28, 167, 232, 0.747), #1CA6E8);
+  box-shadow: 2px 6px 2px 1px rgb(25, 144, 199);
+}
+
+.black {
+  background: radial-gradient(rgb(45, 45, 53), rgb(45, 45, 53));
+  box-shadow: 2px 6px 2px 1px rgb(45, 45, 53);
+}
+
+.white {
+  color: rgba(0, 0, 0, 0.7);
+  background: radial-gradient(white, rgba(230, 229, 229, 0.623));
+  box-shadow: 2px 6px 2px 1px rgba(230, 229, 229, 0.623);
+}
