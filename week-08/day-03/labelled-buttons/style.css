@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 14px;
+}
+
+body {
+  background: #666;
+  margin: 0 auto;
+}
+
+.container {
+  height: 400px;
+  width: 400px;
+  position: relative;
+  left: 300px;
+  top: 50px;
+  display: flex;
+  flex-direction: column;
+  background: #313841;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+}
+
+button {
+  background: #1C242B;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.label {
+  height: 40px;
+  width: 130px;
+  text-align: center;
+  margin: 0;
+  padding: 10px;
+  color: white;
+  display: none;
+}
+
+button[data-action="delete"]:hover {
+  color: #F04747;
+}
+
+button[data-action="delete"]:hover+.label {
+  display: block;
+  background: #F04747;
+  color: white;
+}
+
+button[data-action="confirm"]:hover {
+  color: #3FB97F;
+}
+
+button[data-action="confirm"]:hover+.label {
+  background: #3FB97F;
+  display: block;
+  color: white;
+}
+
+button:hover:after {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(136, 183, 213, 0);
+  border-left-color: rgb(32, 30, 30);
+  border-width: 5px;
+  margin-top: -5px;
+}
