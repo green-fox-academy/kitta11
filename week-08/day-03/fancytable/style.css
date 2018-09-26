@@ -1,0 +1,100 @@
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+#wrapper {
+  background: linear-gradient(to right, #4396E9, rgba(255, 255, 0, 0.562), #4396E9);
+  height: 400px;
+}
+
+table {
+  margin: 0 auto;
+  position: relative;
+  top: 30px;
+  width: 300px;
+  border-collapse: collapse;
+  height: 80%;
+  border-radius: 10px;
+  overflow: hidden;
+  /* border: 2px solid tomato; */
+}
+
+table thead th {
+  background: black;
+  color: white;
+  height: 40px;
+  /* border: 2px solid #9EA7AF; */
+}
+
+/* table thead th:first-child {
+  border-radius: 5px 0px 0px 0px;
+}
+
+table thead th:last-child {
+  border-radius: 0px 5px 0px 0px;
+} */
+
+table tbody tr {
+  height: 40px;
+}
+
+table tbody tr td {
+  border: 2px solid #9EA7AF;
+}
+
+table tbody tr:nth-child(odd) {
+  background: #EBEBEB;
+}
+
+table tbody tr:nth-child(even) {
+  background: #FFFFFF;
+}
+
+table tbody td[data-currency='$']:before {
+  content: '$ ';
+}
+
+table tbody td[data-currency='$']:after {
+  content: '.00';
+}
+
+table tbody tr td:first-child {
+  min-width: 150px;
+}
+
+table tbody tr td:last-child {
+  min-width: 150px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+/* table tbody tr:last-child td:first-child {
+  border-bottom: none;
+  border-radius: 0 0 0 5px;
+}
+
+table tbody tr:last-child td:last-child {
+  border-bottom: none;
+  border-radius: 0 0 5px 0;
+} */
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+}
+
+table tr:first-child th {
+  border-top: 0;
+}
+
+table tr:last-child td {
+  border-bottom: 0;
+}
+
+table tr td:first-child, table tr th:first-child {
+  border-left: 0;
+}
+
+table tr td:last-child, table tr th:last-child {
+  border-right: 0;
+}
