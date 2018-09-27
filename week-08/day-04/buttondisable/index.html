@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Button disable</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./index.js"></script>
+</head>
+
+<body>
+  <form action="#" method="POSTt">
+    <!-- Favorite pet -->
+    <div id=favpetdiv>
+      <p>What is your favorite pet?</p>
+      <input type="radio" value="dog" name="favpet" />
+      <label for="dog">Dog</label><br />
+      <input type="radio" value="cat" name="favpet" />
+      <label for="cat">Cat</label>
+      <input type="radio" value="goldfish" name="favpet" />
+      <label for="goldfish">Viktor the goldfish</label>
+    </div>
+
+    <!-- subscribe -->
+    <p>Do you want to sign up for cat facts?</p>
+    <input type="radio" value="yes" name="catfact" />
+    <label for="yes">YES</label><br />
+    <input type="radio" value="no" name="catfact" />
+    <label for="no">NO</label>
+
+    <!-- Buttons -->
+    <button type="button" disabled="disabled">I love cats</button>
+    <button type="submit" disabled="disabled">Sign up</button>
+  </form>
+</body>
+
+</html>
