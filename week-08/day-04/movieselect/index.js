@@ -5,6 +5,7 @@ window.onload = () => {
   let movielistDIV = document.querySelector('#movielist');
   let movielist = document.querySelector('#movies').querySelectorAll('option');
   let selectedSpan = document.querySelector('#selected');
+  let resetBtn = document.querySelector("button[type=reset]")
 
 
   genrelistDIV.addEventListener('change', (e) => {
@@ -31,6 +32,7 @@ window.onload = () => {
   movielistDIV.addEventListener('change', (e) => {
     console.log(e.target.value)
     selectedSpan.innerText = e.target.value;
+    resetBtn.disabled = false;
   })
 
 }

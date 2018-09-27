@@ -11,36 +11,41 @@
 </head>
 
 <body>
-  <h1>Movie selector</h1>
-  <div id="selectwrapped">
-    <div id="genrelist">
-      <input type="text" list="genres" placeholder="Select a genre" />
-      <datalist id="genres">
-        <option>Sci-fi</option>
-        <option>Drama</option>
-        <option>Comedy</option>
-      </datalist>
+  <form id="container">
+    <h1>Movie selector</h1>
+    <div id="selectwrapped">
+      <div id="genrelist">
+        <input type="text" list="genres" placeholder="Select a genre" />
+        <datalist id="genres">
+          <option>Sci-fi</option>
+          <option>Drama</option>
+          <option>Comedy</option>
+        </datalist>
+      </div>
+      <div id="movielist">
+        <input type="text" list="movies" placeholder="Select a movie" />
+        <datalist id="movies">
+          <option class="scifi" disabled>Moon</option>
+          <option class="scifi" disabled>2001 Space odessy</option>
+          <option class="scifi" disabled>Contact</option>
+          <option class="drama" disabled>Darkest hour</option>
+          <option class="drama" disabled>There will be blood</option>
+          <option class="drama" disabled>American beauty</option>
+          <option class="comedy" disabled>Airplane!</option>
+          <option class="comedy" disabled>Deadpool</option>
+          <option class="comedy" disabled>Wayne's World</option>
+        </datalist>
+      </div>
     </div>
-    <div id="movielist">
-      <input type="text" list="movies" placeholder="Select a movie" />
-      <datalist id="movies">
-        <option class="scifi" disabled>Moon</option>
-        <option class="scifi" disabled>2001 Space odessy</option>
-        <option class="scifi" disabled>Contact</option>
-        <option class="drama" disabled>Darkest hour</option>
-        <option class="drama" disabled>There will be blood</option>
-        <option class="drama" disabled>American beauty</option>
-        <option class="comedy" disabled>Airplane!</option>
-        <option class="comedy" disabled>Deadpool</option>
-        <option class="comedy" disabled>Wayne's World</option>
-      </datalist>
-    </div>
-  </div>
 
 
-  <div id="result">
-    The selected movie is: <span id="selected"></span>
-  </div>
+    <div id="result">
+      The selected movie is: <span id="selected"></span>
+    </div>
+
+    <button type="reset" disabled>Choose again</button>
+
+  </form>
 
 </body>
 
