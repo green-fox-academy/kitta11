@@ -5,18 +5,24 @@
   margin: 0;
 }
 
+body {
+  background: #666;
+}
+
 form {
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   width: 400px;
-  height: 400px;
+  height: 320px;
+  background: #eee;
 }
 
 div {
-  margin-top: 20px;
-  margin-left: 20px;
-  border: 3px solid tomato;
+  margin: 10px;
+  padding: 10px;
+  background: white;
 }
 
 button {
