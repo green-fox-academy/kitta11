@@ -1,0 +1,56 @@
+* {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+body {
+  background: #EBEBEB;
+}
+
+#wrapper {
+  background: white;
+  width: 500px;
+}
+
+h1 {
+  font-size: 20px;
+  padding: 20px;
+}
+
+form {
+  margin: 20px;
+}
+
+button {
+  width: 130px;
+  height: 40px;
+  color: white;
+  font-size: 14px;
+  background: #333333;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+label {
+  display: inline;
+  padding: 10px 0px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+
+input[type="password"], input[type="text"] {
+  /* display: block; */
+  margin: 10px 0;
+  padding: 10px 10px 10px 10px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  /* color of the inputted text */
+  color: black;
+  background: #EBEBEB;
+}
+
+input:required:hover {
+  box-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
+}
