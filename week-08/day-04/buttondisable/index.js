@@ -7,7 +7,11 @@ window.onload = () => {
 
 
   favpetDiv.addEventListener('change', (e) => {
-    submitBtn.disabled = false;
+    if (e.target.value !== 'goldfish') {
+      submitBtn.disabled = false;
+    } else {
+      submitBtn.disabled = true;
+    }
   })
 
   catfactsub.addEventListener('change', (e) => {
@@ -15,6 +19,7 @@ window.onload = () => {
       loveCatsBtn.disabled = false;
       alert(`Thank you, you've successfully signed up for cat facts`)
     } else {
+      loveCatsBtn.disabled = true;
       alert(`Sigh, we still added you to the cat facts list`)
     }
   })
