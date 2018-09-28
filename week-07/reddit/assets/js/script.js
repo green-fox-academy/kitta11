@@ -61,6 +61,7 @@ window.onload = () => {
         upvoteBtn.appendChild(upvoteImg);
         upvoteImg.setAttribute("src", "./assets/imgs/upvote.png");
 
+        //without limiting voting per user
         upvoteBtn.addEventListener('click', () => {
           upvoteImg.setAttribute("src", "./assets/imgs/upvoted.png");
           upvote(upvoteBtn.parentElement.parentElement.id);
@@ -81,9 +82,7 @@ window.onload = () => {
         downvoteImg.classList.add('votebutton');
         downvoteImg.setAttribute("src", "./assets/imgs/downvote.png");
 
-
-        // simple event listener without checking the second click or sending the vote to backend
-
+        //without limiting voting per user
         downvoteBtn.addEventListener('click', () => {
           downvoteImg.setAttribute("src", "./assets/imgs/downvoted.png")
           downvote(downvoteBtn.parentElement.parentElement.id);

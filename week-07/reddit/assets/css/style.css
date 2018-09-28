@@ -127,8 +127,12 @@ button.engage {
 
 #rightcol {
   width: 30%;
-  background: lightgoldenrodyellow;
+  /* background: lightgoldenrodyellow; */
   border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 5px;
 }
 
 thead {
@@ -145,4 +149,68 @@ th {
 td {
   width: auto;
   height: 60px;
+}
+
+#newpostbtn {
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 95%;
+  text-align: center;
+  padding: 10px 5px;
+  height: 40px;
+  color: rgba(252, 252, 252, 0.7);
+  background: #4FA4DD;
+  margin: 5px 5px;
+}
+
+#related {
+  margin: 20px 10px;
+  background: #F5F5F5;
+}
+
+#related h1 {
+  color: #666;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 10px 0px;
+}
+
+#related li {
+  color: #666;
+  font-size: 14px;
+  padding: 5px 10px;
+  list-style-type: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  /* background: #32AD63; */
+  justify-content: space-evenly;
+}
+
+form div {
+  display: flex;
+  margin-left: 20px;  
+}
+
+form label {
+  width: 150px;
+  height: 30px;
+}
+
+form input {
+  width: 250px;
+  height: 30px;
+}
+
+form button {
+  width: 120px;
+  text-align: center;
+  padding: 10px 5px;
+  height: 40px;
+  color: rgba(252, 252, 252, 0.7);
+  background: #4FA4DD;
+  margin: 5px 5px;
 }

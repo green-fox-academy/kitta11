@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>New post</title>
+</head>
+
+<body>
+  <div id="contentwrapper">
+    <div id="cathead">
+      <img class="imgheader" src="./assets/imgs/technology_header.jpg" alt="Technology related posts">
+      <div class="headtitle">Add a new post</div>
+    </div>
+    <div id="formcontainer">
+      <form action="http://localhost:3000/api/posts" method="POST" enctype="application/json">
+        <div id="title">
+          <label for="posttitle">Title of your post</label>
+          <input type="text" name="title" id="posttitle" required placeholder="please provide a title">
+        </div>
+        <div id="url">
+          <label for="posturl">Url</label>
+          <input type="url" name="url" id="posturl" required placeholder="please provide an url">
+        </div>
+        <div id="owner">
+          <label for="ownerid">Owner ID</label>
+          <input type="text" name="owner_id" id="ownerid" required>
+        </div>
+        <div id="buttons">
+          <button type="submit">Send post</button>
+          <button type="reset">Reset form</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</body>
+
+</html>

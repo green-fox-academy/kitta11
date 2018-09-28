@@ -17,6 +17,7 @@ const connection = mysql.createConnection({
 });
 
 app.use('/assets', express.static('assets'));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 connection.connect(function (err) {
   if (err) {
@@ -28,6 +29,10 @@ connection.connect(function (err) {
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/newpost', (req, res) => {
+  res.sendFile(path.join(__dirname, 'newpost.html'));
 });
 
 app.get('/api/posts', (req, res) => {
@@ -66,28 +71,6 @@ const deletePost = (id) => {
   })
 }
 
-// const getRecordbyID = (post_id) => {
-//   // let newRecord = {};
-//   connection.query(`SELECT * from posts WHERE id=${post_id}`, (err, result) => {
-//     if (err) {
-//       console.log(err.toString());
-//       return;
-//     }
-//     newRecord = {
-//       id: result[0].id,
-//       title: result[0].title,
-//       url: result[0].url,
-//       score: result[0].score
-//     }
-//     // console.log(newRecord)
-//     return newRecord
-//   })
-//   return newRecord
-// }
-
-// console.log(getRecordbyID(18));
-// getRecordbyID(18);
-
 
 app.post('/api/posts', jsonParser, (req, res) => {
   if (req.body.title && req.body.url && req.body.owner_id) {
@@ -103,14 +86,15 @@ app.post('/api/posts', jsonParser, (req, res) => {
       }
       newRecord = result[0];
       console.log(newRecord)
-      res.json({
-        "id": newRecord.id,
-        "title": newRecord.title,
-        "url": newRecord.url,
-        "timestamp": newRecord.timestamp,
-        "score": newRecord.score,
-        "owner": newRecord.username,
-      });
+      res.redirect('/');
+      // res.json({
+      //   "id": newRecord.id,
+      //   "title": newRecord.title,
+      //   "url": newRecord.url,
+      //   "timestamp": newRecord.timestamp,
+      //   "score": newRecord.score,
+      //   "owner": newRecord.username,
+      // });
     })
   } else {
     console.log(`data was not provided`)
