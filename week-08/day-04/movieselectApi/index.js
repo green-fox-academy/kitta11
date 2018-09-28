@@ -37,13 +37,12 @@ window.onload = () => {
           };
         }
         listmovies(selectedGenreID);
-
       })
-
     }
   }
   requestGenre.send()
-
+  let selectedMovie = null;
+  let selectedMovieImg = null;
   const listmovies = (genreID) => {
     let urlmovie = [
       `https://api.themoviedb.org/3/discover/movie?`,
@@ -51,16 +50,12 @@ window.onload = () => {
       `language=en-US&include_adult=false&include_video=false&page=1`,
       `&with_genres=${genreID}`
     ].join('');
-    console.log(urlmovie);
     requestMovies.open('GET', `${urlmovie}`, true);
-    console.log(requestMovies);
 
     requestMovies.onload = () => {
-      let selectedMovie = null;
-      let selectedMovieImg = null;
       if (requestGenre.status === 200) {
+
         const movies = JSON.parse(requestMovies.response).results;
-        console.log(movies);
         for (let i = 0; i < movies.length; i++) {
           let newOption = `<option value="${movies[i].title}" id="${movies[i].id}"></option>`
           movieSelect.innerHTML += newOption;
@@ -74,8 +69,8 @@ window.onload = () => {
               selectedMovieImg = `https://image.tmdb.org/t/p/w500/${movies[i].poster_path}`
             };
           }
-          console.log(selectedMovieImg);
           movieImg.setAttribute('src', selectedMovieImg)
+          console.log(movieImg);
 
         })
         resetBtn.addEventListener('click', (event) => {

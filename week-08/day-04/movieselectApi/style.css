@@ -45,7 +45,7 @@ input[list="movies"] {
   flex-direction: column;
   width: 100%;
   padding: 15px;
-  color: white;
+  color: #666;
   background: white;
 }
 
