@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 400px;
+  /* height: 400px; */
 }
 
 h1 {
@@ -40,11 +40,13 @@ input[list="movies"] {
 }
 
 #result {
-  height: 50px;
+  /* height: 50px; */
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 15px;
   color: white;
-  background: #666;
+  background: white;
 }
 
 #selected {
@@ -62,4 +64,9 @@ button[type="reset"] {
 button[type="reset"]:disabled {
   background: radial-gradient(white, rgba(230, 229, 229, 0.623));
   margin: 5px 0;
+}
+
+#movieImg {
+  width: 470px;
+  height: calc(500px*4/3)
 }

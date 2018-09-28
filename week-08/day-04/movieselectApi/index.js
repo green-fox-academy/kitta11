@@ -6,10 +6,11 @@ window.onload = () => {
   const requestMovies = new XMLHttpRequest();
   const genreSelect = document.querySelector("datalist[id=genres]");
   const movieSelect = document.querySelector("datalist[id=movies]")
-  let genrelistDIV = document.querySelector('#genrelist');
-  let movielistDIV = document.querySelector('#movielist');
-  let selectedSpan = document.querySelector('#selected');
-  let resetBtn = document.querySelector("button[type=reset]")
+  const genrelistDIV = document.querySelector('#genrelist');
+  const movielistDIV = document.querySelector('#movielist');
+  const selectedSpan = document.querySelector('#selected');
+  const resetBtn = document.querySelector("button[type=reset]")
+  const movieImg = document.querySelector("#movieImg")
 
   let urlgenre = `https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=a174b33570b86d71044e1d8f89774a2b`;
   requestGenre.open('GET', `${urlgenre}`, true);
@@ -55,6 +56,8 @@ window.onload = () => {
     console.log(requestMovies);
 
     requestMovies.onload = () => {
+      let selectedMovie = null;
+      let selectedMovieImg = null;
       if (requestGenre.status === 200) {
         const movies = JSON.parse(requestMovies.response).results;
         console.log(movies);
@@ -63,9 +66,21 @@ window.onload = () => {
           movieSelect.innerHTML += newOption;
         }
         movielistDIV.addEventListener('change', (e) => {
-          console.log(e.target.value)
+          selectedMovie = e.target.value
           selectedSpan.innerText = e.target.value;
           resetBtn.disabled = false;
+          for (let i = 0; i < movies.length; i++) {
+            if (movies[i].title === selectedMovie) {
+              selectedMovieImg = `https://image.tmdb.org/t/p/w500/${movies[i].poster_path}`
+            };
+          }
+          console.log(selectedMovieImg);
+          movieImg.setAttribute('src', selectedMovieImg)
+
+        })
+        resetBtn.addEventListener('click', (event) => {
+          movieImg.removeAttribute('src');
+          selectedSpan.innerText = '';
         })
       }
     }
