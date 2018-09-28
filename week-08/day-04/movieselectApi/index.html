@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Movie selector</title>
+  <script src="./index.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <form id="container">
+    <h1>Movie selector</h1>
+    <div id="selectwrapped">
+      <div id="genrelist">
+        <input type="text" list="genres" placeholder="Select a genre" />
+        <datalist id="genres">
+
+        </datalist>
+      </div>
+      <div id="movielist">
+        <input type="text" list="movies" placeholder="Select a movie" />
+        <datalist id="movies">
+        </datalist>
+      </div>
+    </div>
+
+
+    <div id="result">
+      The selected movie is: <span id="selected"></span>
+    </div>
+
+    <button type="reset" disabled>Choose again</button>
+
+  </form>
+
+</body>
+
+</html>
