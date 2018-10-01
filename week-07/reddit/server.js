@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const path = require('path');
-const time = require("time-since");
 
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
@@ -33,10 +32,16 @@ app.get('/', (req, res) => {
 
 app.get('/newpost', (req, res) => {
   res.sendFile(path.join(__dirname, 'newpost.html'));
+
+});
+
+app.get('/modifypost/:id', (req, res) => {
+  res.sendFile(path.join(__dirname, `modifypost.html`));
+
 });
 
 app.get('/api/posts', (req, res) => {
-  let basicquery = `select id, title, url, score, username, timestamp from posts INNER JOIN users ON posts.owner_id=users.user_id`;
+  let basicquery = `select id, title, url, score, username, timestamp from posts INNER JOIN users ON posts.owner_id=users.user_id ORDER BY timestamp DESC`;
   connection.query(basicquery, (err, posts) => {
     if (err) {
       console.log(err.toString());
@@ -46,6 +51,21 @@ app.get('/api/posts', (req, res) => {
     res.json({
       posts,
     })
+  })
+})
+
+app.get('/api/postcontent/:id', (req, res) => {
+  let post_id = req.params.id;
+  let basicquery = `select title, url, username from posts INNER JOIN users ON posts.owner_id=users.user_id WHERE id=${post_id};`
+  connection.query(basicquery, (err, posts) => {
+    if (err) {
+      console.log(err.toString());
+      res.status(500).send('Database error');
+      return;
+    }
+    res.json(
+      posts[0],
+    )
   })
 })
 
@@ -133,7 +153,7 @@ app.put('/api/posts/:id/upvote', jsonParser, (req, res) => {
   //getRecordbyID(post_id);
 })
 
-app.put('/api/posts/:id', jsonParser, (req, res) => {
+app.post('/api/posts/:id', jsonParser, (req, res) => {
   let post_id = req.params.id;
   let queryID = `select title, url, score, timestamp, username from posts INNER JOIN users ON posts.owner_id=users.user_id WHERE id=${post_id}`
   let title = req.body.title;
@@ -164,14 +184,15 @@ app.put('/api/posts/:id', jsonParser, (req, res) => {
     }
     newRecord = result[0];
     console.log(newRecord)
-    res.json({
-      "id": newRecord.id,
-      "title": newRecord.title,
-      "url": newRecord.url,
-      "timestamp": newRecord.timestamp,
-      "score": newRecord.score,
-      "owner": newRecord.username,
-    });
+    // res.json({
+    //   "id": newRecord.id,
+    //   "title": newRecord.title,
+    //   "url": newRecord.url,
+    //   "timestamp": newRecord.timestamp,
+    //   "score": newRecord.score,
+    //   "owner": newRecord.username,
+    // });
+    res.redirect('/')
   })
 })
 

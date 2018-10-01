@@ -4,7 +4,24 @@ window.onload = () => {
   const requestPost = new XMLHttpRequest();
   const downvoteRequest = new XMLHttpRequest();
   const upvoteRequest = new XMLHttpRequest();
+  const deleteRequest = new XMLHttpRequest();
   const postblock = document.querySelector('#postcontainer');
+
+  //timedifference calc function
+  const timeDiff = (dateThenTimestamp) => {
+    let dateNow = Date.parse(new Date());
+    let dateThen = Date.parse(new Date(dateThenTimestamp))
+    let diffInDays = Math.floor((dateNow - dateThen) / 60000 / 60 / 24)
+    let diffInHours = Math.floor((dateNow - dateThen) / 60000 / 60)
+    let diffInMinutes = Math.floor((dateNow - dateThen) / 60000)
+    if (diffInHours < 1) {
+      return `${diffInMinutes} minutes ago`
+    } else if (diffInHours > 1 && diffInHours < 24) {
+      return `${diffInHours} hours ago`
+    } else {
+      return `${diffInDays} days ago`
+    }
+  }
 
   // downvote function with calling put request
   const downvote = (postid) => {
@@ -32,6 +49,22 @@ window.onload = () => {
     }
     upvoteRequest.send()
   }
+
+  // delete function with calling delete request
+  const deletePost = (postid) => {
+    deleteRequest.open('DELETE', `${host}/api/posts/${postid}`, true);
+    console.log(deleteRequest);
+
+    deleteRequest.onload = () => {
+      if (deleteRequest.status === 200) {
+        const source = JSON.parse(deleteRequest.response);
+        console.log(source);
+      }
+    }
+    deleteRequest.send()
+  }
+
+
 
   // core post listing
   requestPost.open('GET', `${host}/api/posts`, true);
@@ -105,8 +138,8 @@ window.onload = () => {
         engageDiv.appendChild(dateP);
         dateP.id = "dateP";
         dateP.classList.add('engage');
-        let date = new Date(post.timestamp).toDateString();
-        dateP.innerText = `Submitted on ${date}`;
+        dateP.innerText = `Submitted ${timeDiff(post.timestamp)}`;
+
 
         let owner = document.createElement('p');
         engageDiv.appendChild(owner);
@@ -126,10 +159,24 @@ window.onload = () => {
         delBtn.classList.add('engage');
         delBtn.innerText = `DELETE`;
 
-
-        upvoteBtn.addEventListener('click', () => {
-          console.log(`I am clicked`)
+        delBtn.addEventListener('click', (e) => {
+          let delId = delBtn.parentElement.parentElement.parentElement.id
+          deletePost(delId);
+          divTobeDeleted = delBtn.parentElement.parentElement.parentElement;
+          console.log(divTobeDeleted);
+          divTobeDeleted.parentNode.removeChild(divTobeDeleted);
         })
+
+        modifyBtn.addEventListener('click', (e) => {
+          localStorage.setItem('currentId', post.id);
+          console.log(post.id)
+          localStorage.setItem('currentTitle', post.title);
+          localStorage.setItem('currentUrl', post.url);
+          location.href = `${host}/modifypost/${post.id}`;
+          // let modId = modifyBtn.parentElement.parentElement.parentElement.id;
+          // window.open(`./modifypost/${post.id}`, "_self")
+        })
+
       });
     }
   }
