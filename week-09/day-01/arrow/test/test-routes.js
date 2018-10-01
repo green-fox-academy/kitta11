@@ -37,3 +37,18 @@ test('testing yondu endpoints with no queries ', t => {
       t.end();
     });
 });
+test('testing yondu endpoints with no zero time ', t => {
+  request(app)
+    .get("/yondu/?distance=120.0&time=0")
+    .expect('Content-Type', /json/)
+    .expect(400)
+    .end((err, res) => {
+      var expectedResult = {
+        "error": "time can not be zero"
+      };
+
+      t.error(err, 'No error');
+      t.same(res.body, expectedResult, 'Error message as expected');
+      t.end();
+    });
+});

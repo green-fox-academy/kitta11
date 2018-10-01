@@ -10,11 +10,17 @@ app.get('/yondu', (req, res) => {
   let distance = req.query.distance;
   let time = req.query.time;
   if (distance && time) {
-    res.status(200).json({
-      "distance": distance,
-      "time": time,
-      "speed": distance / time
-    })
+    if (time != 0) {
+      res.status(200).json({
+        "distance": distance,
+        "time": time,
+        "speed": distance / time
+      })
+    } else {
+      res.status(400).json({
+        "error": "time can not be zero"
+      })
+    }
   } else {
     res.status(400).json({
       "error": "no data provided"
