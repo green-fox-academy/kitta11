@@ -1,6 +1,9 @@
 'use strict';
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
 
 
 app.get('/yondu', (req, res) => {
@@ -11,6 +14,10 @@ app.get('/yondu', (req, res) => {
       "distance": distance,
       "time": time,
       "speed": distance / time
+    })
+  } else {
+    res.status(400).json({
+      "error": "no data provided"
     })
   }
 })
