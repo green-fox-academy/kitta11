@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+}
+
+#gridwrapper {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template: repeat(6, 1fr)/repeat(21, 1fr);
+  grid-gap: 5px;
+  background: #2d3436;
+  font-family: fantasy;
+  font-size: 20px;
+}
+
+.biggreen {
+  background: #00cec9;
+  grid-area: 2/4/6/19;
+}
+
+.cards {
+  background: #ff7675;
+  grid-area: 3/12/5/18;
+  text-align: center;
+  padding: 20%;
+  text-transform: uppercase;
+}
+
+.yellow {
+  background: #ffeaa7;
+}
+
+.one {
+  grid-area: 1/1/2/4;
+  text-align: center;
+  padding: 20%;
+  text-transform: uppercase;
+}
+
+.two {
+  grid-area: 1/4/2/7;
+}
+
+.three {
+  grid-area: 1/7/2/10;
+}
+
+.four {
+  grid-area: 1/10/2/13;
+}
+
+.five {
+  grid-area: 1/13/2/16;
+}
+
+.six {
+  grid-area: 1/16/2/19;
+}
+
+.seven {
+  grid-area: 1/19/2/22;
+}
+
+.eight {
+  grid-area: 2/19/3/22;
+}
+
+.nine {
+  grid-area: 3/19/4/22;
+}
+
+.ten {
+  grid-area: 4/19/5/22;
+}
+
+.eleven {
+  grid-area: 5/19/6/22;
+}
+
+.twelve {
+  grid-area: 6/19/7/22;
+  text-align: center;
+  padding: 20%;
+}
+
+.thirteen {
+  grid-area: 6/16/7/19;
+}
+
+.fourteen {
+  grid-area: 6/13/7/16;
+}
+
+.fifteen {
+  grid-area: 6/10/7/13;
+}
+
+.sixteen {
+  grid-area: 6/7/7/10;
+}
+
+.seventeen {
+  grid-area: 6/4/7/7;
+}
+
+.eighteen {
+  grid-area: 6/1/7/4;
+}
+
+.nineteen {
+  grid-area: 5/1/6/4;
+}
+
+.twenty {
+  grid-area: 4/1/5/4;
+}
+
+.twentyone {
+  grid-area: 3/1/4/4;
+}
+
+.twentytwo {
+  grid-area: 2/1/3/4;
+}
