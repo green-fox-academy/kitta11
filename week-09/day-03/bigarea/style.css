@@ -1,0 +1,42 @@
+#gridwrapper {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template: repeat(9, 1fr)/repeat(9, 1fr);
+  grid-gap: 5px;
+  background: #2d3436;
+}
+
+.purple {
+  background: #a29bfe;
+}
+
+.one {
+  grid-area: 1/1/4/4;
+}
+
+.two {
+  grid-area: 4/1/7/4;
+}
+
+.three {
+  grid-area: 7/1/10/4;
+}
+
+.four {
+  grid-area: 7/4/10/7;
+}
+
+.five {
+  grid-area: 7/7/10/10;
+}
+
+.yellow {
+  background: #ffeaa7;
+  grid-area: 2/5/6/9
+}
+
+.green {
+  background: #55efc4;
+  grid-area: 1/4/7/10
+}
