@@ -41,13 +41,21 @@ body {
   justify-content: center;
 }
 
-#btntoadmin {
+#buttonsdiv {
+  display: flex;
+  justify-content: center;
+}
+
+#btntoadmin, #givemenew {
   padding: 15px 5px;
   text-align: center;
   height: 50px;
   width: 120px;
   background: #00cec9;
+  border: 1px solid white;
+  border-radius: 5px;
   color: white;
+  margin: 5px;
 }
 
 #questions {
@@ -72,4 +80,6 @@ body {
   width: 280px;
   height: 50px;
   margin: 3px 0;
+  background: #74b9ff;
+  color: white;
 }
