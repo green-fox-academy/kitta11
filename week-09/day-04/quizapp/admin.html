@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manage the questions</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="/assets/js/admin.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+
+
+</head>
+
+<body>
+  <div id="contentcontainer">
+    <div id="newone">
+      <h1>Create a new question</h1>
+      <form id="addnewitem" action="" method="POST" enctype="application/json">
+        <input type="text" name="question" id="question" placeholder="Type your question here" required>
+        <legend>Answers</legend>
+        <div id="ansdiv-one">
+          <label for="answerone">#1</label>
+          <input type="text" name="answer" id="answerone" required placeholder="Type your answer here">
+          <input type="radio" name="is_correct" id="radioone" required>
+        </div>
+        <div id="ansdiv-two">
+          <label for="answertwo">#2</label>
+          <input type="text" name="answer" id="answertwo" required placeholder="Type your answer here">
+          <input type="radio" name="is_correct" id="radiotwo" required>
+        </div>
+        <div id="ansdiv-three">
+          <label for="answertwo">#3</label>
+          <input type="text" name="answer" id="answerthree" required placeholder="Type your answer here">
+          <input type="radio" name="is_correct" id="radiothree" required>
+        </div>
+        <div id="ansdiv-four">
+          <label for="answerfour">#4</label>
+          <input type="text" name="answer" id="answerfour" required placeholder="Type your answer here">
+          <input type="radio" name="is_correct" id="radiofour" required>
+        </div>
+        <div id="buttonsdiv">
+          <button type="submit">Send</button>
+          <button type="reset">Clear the form</button>
+        </div>
+
+      </form>
+    </div>
+    <div id="existing">
+      <h1>Manage questions</h1>
+      <div id="questions">
+      </div>
+    </div>
+
+
+  </div>
+
+</body>
+
+</html>
