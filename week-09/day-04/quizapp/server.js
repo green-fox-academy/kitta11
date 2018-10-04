@@ -25,6 +25,7 @@ const connection = mysql.createConnection({
   user: 'root',
   password: 'ZORRAverde911',
   database: 'quiz',
+  multipleStatements: true
 });
 
 const isCorrect = (input) => {
@@ -79,7 +80,7 @@ app.get('/game', (req, res) => {
 })
 
 app.get('/questions', (req, res) => {
-  const questionlistquery = `SELECT questions.id, question FROM questions;`
+  const questionlistquery = `SELECT questions.id, question FROM questions ORDER BY question ASC;`
   connection.query(questionlistquery, (err, result) => {
     if (err) {
       console.log(err.toString());
@@ -89,7 +90,7 @@ app.get('/questions', (req, res) => {
   })
 })
 
-app.post('/question', (req, res) => {
+app.post('/questions', (req, res) => {
   const source = req.body;
   const question = source.question;
   const answerOne = source.answerone;
@@ -126,9 +127,20 @@ app.post('/question', (req, res) => {
       })
     }
   })
+})
 
-
-
+app.delete('/questions/:id', (req, res) => {
+  const questionId = req.params.id;
+  const deleteQuery = `DELETE from questions where questions.id = ${questionId}; DELETE from answers where question_id = ${questionId};`;
+  console.log(deleteQuery)
+  connection.query(deleteQuery, (err, result) => {
+    if (err) {
+      console.log(err.toString());
+      return;
+    }
+    console.log(result)
+    res.json(result)
+  })
 })
 
 

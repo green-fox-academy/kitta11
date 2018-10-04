@@ -21,7 +21,7 @@ window.onload = () => {
       radiofour: radiofour.checked
     }
     console.log(body)
-    const postQUrl = `${host}/question`
+    const postQUrl = `${host}/questions`
 
     fetch(postQUrl, {
       method: "POST",
@@ -72,7 +72,23 @@ window.onload = () => {
         deleteBtn.innerHTML = `<i class="fas fa-trash"></i>Delete`;
 
         deleteBtn.addEventListener('click', (event) => {
-          console.log(event)
+          console.log(event);
+          console.log(item.id)
+          const deleteURL = `${host}/questions/${item.id}`
+          console.log(deleteURL)
+          // const body = { questionID: `${item.id}` }
+          // console.log(body);
+          fetch(deleteURL, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+            },
+          })
+            // .then(res => res.json())
+            .then(response => {
+              window.location.reload('/admin');
+              window.scrollTo(0, 0);
+            })
         })
 
 
