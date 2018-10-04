@@ -7,19 +7,19 @@ window.onload = () => {
   const scorevalue = document.querySelector('#scorevalue');
   const questionDIV = document.querySelector('#questions');
   const questiontext = document.querySelector('#currentquest');
-  // let currentscore = 0;
-
-  //      <button class="answer">1</button>
+  let currentscore = undefined;
+  scorevalue.innerHTML = currentscore;
 
   fetch(urlgame)
     .then(res => res.json())
     .then(myJson => {
       const source = myJson;
       console.log(source);
-      let currentscore = localStorage.getItem('currentscore')
-      scorevalue.innerHTML = currentscore;
 
       questiontext.innerHTML = `"${source.question}"`
+      let currentscore = localStorage.getItem('actualscore')
+      scorevalue.innerHTML = currentscore;
+
       for (let i = 0; i < 4; i++) {
         let newAns = document.createElement('button');
         questionDIV.appendChild(newAns);
@@ -31,13 +31,13 @@ window.onload = () => {
           if (source.answers[i].is_correct === 1) {
             newAns.style.background = '#00b894';
             newAns.style.color = 'white'
-            let currentscore = localStorage.getItem('currentscore')
-            currentscore += 1;
+            let currentscore = localStorage.getItem('actualscore')
+            currentscore = Number(currentscore) + 1;
             scorevalue.innerHTML = currentscore;
-            localStorage.setItem('currentScore', currentscore)
+            localStorage.setItem('actualscore', currentscore);
 
 
-            // scorevalue.innerText = `${Number(scorevalue.innerText) + 1}`;
+            // scorevalue.innerText = `${ Number(scorevalue.innerText) + 1 } `;
             console.log(scorevalue.innerText)
             newAns.disabled = true;
             setTimeout((function () {
