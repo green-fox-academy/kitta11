@@ -41,5 +41,41 @@ window.onload = () => {
   })
 
   // listing questions
-  const questList = document.querySelector('#existing')
+  const questList = document.querySelector('#questionlist')
+  console.log(questList)
+  const questURL = `${host}/questions`;
+
+  fetch(questURL)
+    .then(res => res.json())
+    .then(myJson => {
+      const questionList = myJson;
+      console.log(questionList)
+
+      questionList.forEach(item => {
+        let questDiv = document.createElement('div')
+        questList.appendChild(questDiv)
+        questDiv.id = item.id;
+        questDiv.classList.add('questdiv')
+
+        let separator = document.createElement('div')
+        questList.appendChild(separator);
+        separator.classList.add('separator')
+
+        let questionText = document.createElement('div');
+        questDiv.appendChild(questionText);
+        questionText.classList.add('questtext')
+        questionText.innerText = item.question;
+
+        let deleteBtn = document.createElement('button');
+        questDiv.appendChild(deleteBtn);
+        deleteBtn.classList.add('deletebtn')
+        deleteBtn.innerHTML = `<i class="fas fa-trash"></i>Delete`;
+
+        deleteBtn.addEventListener('click', (event) => {
+          console.log(event)
+        })
+
+
+      })
+    })
 }

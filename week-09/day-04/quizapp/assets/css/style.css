@@ -6,7 +6,6 @@
 
 body {
   width: 100vw;
-  height: 100vh;
   background: #ECF0F1;
 }
 
@@ -17,7 +16,7 @@ body {
   align-content: center;
   min-width: 400px;
   width: 60%;
-  min-height: 400px;
+  /* min-height: 400px; */
   justify-content: space-around;
 }
 
@@ -109,4 +108,63 @@ input[type="text"] {
 input[id="question"] {
   height: 40px;
   width: 420px;
+}
+
+#existing {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+#questionlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: white;
+  width: 100%;
+  border: 3px solid #00cec9;
+  border-radius: 10px;
+}
+
+.questdiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  /* padding: 10px 5px; */
+  margin: 5px 0;
+  /* border: 2px solid #ECF0F1; */
+}
+
+.questtext {
+  width: 70%;
+  margin: 10px 5px;
+  height: auto;
+}
+
+.deletebtn {
+  width: 80px;
+  height: 40px;
+  background: #e17055;
+  color: #ECF0F1;
+  margin-left: 5px;
+}
+
+.separator {
+  border: 0.5px solid #81ecec;
+}
+
+#formsubBtn, #formresBtn {
+  width: 80px;
+  height: 40px;
+  color: #ECF0F1;
+  margin-left: 5px;
+}
+
+#formsubBtn {
+  background: #00cec9;
+}
+
+#formresBtn {
+  background: #a29bfe;
 }
