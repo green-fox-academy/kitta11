@@ -61,6 +61,14 @@ header("mode of file siz")
 print(df.loc[:, "Size"].mode())
 
 # What are the most popular genres?
+catlist = df.groupby('Category').count().sort_values('App', ascending=False)
+# print(catlist)
+
+three_most_popular = catlist[0:3]
+header("Three most popular genres")
+print(three_most_popular)
+
+# print(df['Category'].value.counts())
 
 # Convert the Last Updated column to YYYYY-MM-DD format and insert it as an extra column next to Last Updated, with the name "Last Updated Readable" and save it as a new, separate CSV file.
 
