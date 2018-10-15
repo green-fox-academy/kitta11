@@ -39,6 +39,8 @@ print(df.loc[10472])
 # need to push all data with one column + adding a category
 for x in range(12, 1, -1):
     df.iat[10472, x] = df.iat[10472, (x-1)]
+# alternate solution with shift
+#  df.iloc[10472, 2:] = df.iloc[10472, 1:].shift(1)
 
 df.iat[10472, 1] = 'TOOLS'
 header("corrected data in row 10472")
@@ -147,6 +149,25 @@ catlist = df.groupby('Category').count().sort_values(
 print('Three most popular categories based on number of apps:', catlist[0:3])
 
 # What are the most popular genres?
+
+genre_list = df.Genres
+print('genrelist', genre_list)
+genre_dict = {}
+
+
+for item in genre_list:
+    # str is necessary because there is a nan...not the most elegant ones...
+    keys = str(item).split(';')
+    for key in keys:
+        if key in genre_dict:
+            genre_dict[key] += 1
+        else:
+            genre_dict[key] = 1
+
+print(sorted(genre_dict.items(), key=lambda x: -x[1]))
+# print(sorted(genre_dict.items(), key=operator.itemgetter(1), reverse=True))
+
+
 header("MOST POPULAR GENRES")
 genrelist = df.groupby('Genres').count().sort_values(
     'App', ascending=False)['App']
