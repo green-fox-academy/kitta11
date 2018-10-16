@@ -1,7 +1,7 @@
 import requests
 import bs4
 import lxml
-import xml.etree.ElementTree as ET
+# import xml.etree.ElementTree as ET
 import pandas
 
 
@@ -9,23 +9,37 @@ cnnsource = requests.get(
     'http://rss.cnn.com/rss/edition_technology.rss')
 
 soup = bs4.BeautifulSoup(cnnsource.text, 'xml')
-root = ET.fromstring(cnnsource.text)
+# root = ET.fromstring(cnnsource.text)
 
 
 items = soup.find_all('item')
-# print(items)
+
+# for item in items:
+#     print(item.title.text)
+#     print(item.guid.text)
+#     print(item.description.string)
+
+taglist = []
+for item in items[0].children:
+    if item.name:
+        taglist.append(item.name)
+
+# print(taglist)
+
+
+item_array = []
 
 for item in items:
-    print(item.title)
+    item_dict = {}
+    for child in item.children:
+        for tag in taglist:
+            if child.name == tag:
+                item_dict[tag] = child.text
+    item_array.append(item_dict)
 
-walkAll = root.getiterator('item')
 
-# for elt in walkAll:
-#     print(elt)
+df = pandas.DataFrame(item_array, columns=item_dict)
 
-# for elt in walkAll:
-#     print(elt.attrib)
-#     print(elt.tag)
-
-# for child in walkAll:
-#     print((child.tag).child)
+# resetting the display settings
+pandas.options.display.max_columns = 15
+print(df.head(20))
