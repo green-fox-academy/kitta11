@@ -25,6 +25,7 @@ for item in weatherlist:
     temp_dict['temp'] = item['main']['temp']
     temp_dict['temp_min'] = item['main']['temp_min']
     temp_dict['temp_max'] = item['main']['temp_max']
+    temp_dict['icon'] = item['weather'][0]['icon']
     main_data.append(temp_dict)
 
 columns_list = main_data[0].keys()
@@ -54,6 +55,15 @@ print(df.loc[:, "temp"].median())
 header("mode of temp")
 print(df.loc[:, "temp"].mode())
 
+print(main_data[0]['icon'])
+print(df)
+
+
+def iconsrc(iconid):
+    return "http://openweathermap.org/img/w/" + iconid + ".png"
+
+
+# print(iconsrc(main_data[0]['icon']))
 
 # box_plot_data = [df['temp'], df['temp_min'], df['temp_max']]
 # plt.boxplot(box_plot_data, notch='True', patch_artist=True,
