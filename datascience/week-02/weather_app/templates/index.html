@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"> -->
+  <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+
+<body>
+  <h1>This is a super lame weather widget</h1>
+  <div id="minmax">
+    <div id="coldest">
+      <h2>Lowest temp in the upcoming 3 days: {{lowest_temp['temp_min']}} Celsius</h2>
+      <div class="animals">
+        {% if lowest_temp['temp_min']< 10 %} <img class="decor" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkdrhVFkLo8qKUyGUAU3gzrh44qUwPIJb15JbZcF7owYX1P_mY">
+          <div class="msg">You will need something warm</div>
+
+          {% else %}
+          <img src="https://i.pinimg.com/originals/98/d7/c7/98d7c76a1a035ad0dcd0e646dfabfa18.jpg" class="decor">
+          <div class="msg">Finally something cool</div>
+          {% endif %}
+
+      </div>
+    </div>
+    <div id="warmest">
+      <h2>Highest temp in the upcoming 3 days: {{highest_temp['temp_max']}} Celsius</h2>
+      <div class="animals">
+        {% if highest_temp['temp_max']> 22 %}
+
+        <img class="decor" src="https://c1.staticflickr.com/1/230/484143172_9d1f80ce6a_z.jpg?zz=1">
+        <div class="msg">You need to cool down</div>
+        {% else %}
+
+        <img src="https://i.ytimg.com/vi/NiiidKMEmcA/maxresdefault.jpg" class="decor">
+        <div class="msg">It is ok babe</div>
+        {% endif %}
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <table>
+    <thead>
+      <th>Date</th>
+      <th>Weather</th>
+      <th>Average temperature</th>
+      <th>Expected min</th>
+      <th>Expected max</th>
+      <th>How does it look like</th>
+    </thead>
+    <tbody>
+      {% for data in main_data %}
+      <tr>
+        <td>{{data['date']}}</td>
+        <td>{{data['weather']}}</td>
+        <td>{{data['temp']}}</td>
+        <td>{{data['temp_min']}}</td>
+        <td>{{data['temp_max']}}</td>
+        <td><img src="{{data['icon']}}"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+
+</html>
