@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Data magic with wikipedia</title>
+  <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+
+<body>
+  <h1>Data magic with Wikipedia content</h1>
+  <h2>Hello {{name}}. Welcome to my magical experiment</h2>
+  <form action="/" method="post">
+    <label for="term">Give me a word</label>
+    <input type="text" name="term" id="term" required>
+    <button type="submit">Vamos a ver</button>
+  </form>
+  {% if result_list %}
+  <div id="requestedterm">Your request:{{term}}</div>
+  <div id="results">
+    <h2>We have found you some interesting wikipedia pages</h2>
+    {% for item in result_list %}
+    <a href="{{item[1]}}" target="_blank">{{item[0]}}</a>
+    {% endfor %}
+    {% endif %}
+  </div>
+  <div>
+    {% if randomcontent %}
+    <h2>Randomly selected words in relation to the above mentioned wiki articles</h2>
+    <div>
+      <table id=randompick>
+        {% for x in range(0,5) %}
+        <tr>
+          {% for i in range(0,3) %}
+          <td>
+            <form action="/" method="post">
+              <input type="text" name="term" id="term" value="{{randomcontent[x*3+i]}}" required>
+              <button type="submit">Check this too</button></form>
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</body>
+
+</html>
