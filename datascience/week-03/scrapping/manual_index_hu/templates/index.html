@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manual scrapping</title>
+  <link rel="stylesheet" type="text/css" href="/main.css">
+</head>
+
+<body>
+  <h1>Manual scrapping</h1>
+  <h2>Hello {{name}}. Welcome to my magical experiment from Week-3, Day-1</h2>
+
+  <div id="soup">
+    {{response}}
+  </div>
+  <div id='printed'>
+    {% for item in printedarticles %}
+    <h3>{{item[0]}}</h3>
+    <p>{{item[1]}}</p>
+    {% endfor %}
+  </div>
+</body>

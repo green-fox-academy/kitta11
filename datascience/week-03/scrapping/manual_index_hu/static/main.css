@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+h1 {
+  color: #0984e3;
+  font-size: 16px;
+  height: 30px;
+  width: 400px;
+  margin: 10px 5px;
+}
+
+h2 {
+  color: #ff7675;
+  font-size: 14px;
+  height: 30px;
+  width: 400px;
+  margin: 10px 5px;
+}
