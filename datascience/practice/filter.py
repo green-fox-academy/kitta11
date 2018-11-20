@@ -46,3 +46,25 @@ def doesneedwatersimple(item):
 
 filteredPlants = list(filter(doesneedwater, plants))
 print(filteredPlants)
+
+
+tobefiltered = [number + number % 12 for number in range(120)]
+print(tobefiltered)
+
+filteredlist = list(filter(lambda x: x % 2 == 0, tobefiltered))
+mappedlist = list(map(lambda x: x**2, filteredlist))
+
+
+from functools import reduce
+reducedlist = reduce(lambda x, y: x+y, tobefiltered)
+
+import itertools
+accumedlist = list(itertools.accumulate(tobefiltered, lambda x, y: x+y))
+
+print(filteredlist)
+print('=====================')
+print(mappedlist)
+print('=====================')
+print(reducedlist)
+print('=====================')
+print(accumedlist)
