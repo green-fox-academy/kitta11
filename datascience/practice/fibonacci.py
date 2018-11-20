@@ -4,7 +4,7 @@ start_time = time.time()
 
 
 def fibonacci(n):
-    result = [0, 1]
+    result = [1, 1]
     for i in range(2, n):
         result.append(result[i-2]+result[i-1])
     return result
