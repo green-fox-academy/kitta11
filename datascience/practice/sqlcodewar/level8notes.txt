@@ -1,0 +1,210 @@
+
+Your task is to use a select statement to return a single column table containing the full title of the person (concatenate all columns together except id), as follows:
+
+SELECT CONCAT(prefix, first, last, suffix) AS TITLE FROM names;
+SELECT prefix || ' ' || first || ' ' ||last || ' ' ||suffix AS TITLE FROM names;
+
+SELECT CONCAT_WS(' ', prefix, first, last, suffix) AS title FROM names
+https://www.mytecbits.com/microsoft/sql-server/using-concat_ws
+
+////////
+
+SELECT id, name, POSITION(',' IN characteristics) as COMMA FROM monsters ORDER BY COMMA
+
+//////
+WITH clause and IN clause
+
+WITH special_sales AS
+  (select * from sales where price > 90)
+  
+  select id, name from departments
+  
+WHERE id IN (SELECT department_id FROM special_sales)
+
+
+-- Create your SELECT statement here
+WITH special_sales (id, name)  
+AS  
+-- Define the CTE query.  
+(  
+    SELECT d.id, d.name
+    FROM sales s
+    INNER JOIN departments d
+    ON s.department_id = d.id
+    WHERE s.price > 90  
+)  
+-- Define the outer query referencing the CTE name.  
+SELECT DISTINCT id, name
+FROM special_sales
+ORDER BY id
+
+------ JOIN 3 tables ----
+SELECT
+  senshi_name AS sailor_senshi,
+  real_name_jpn AS real_name,
+  cats.name AS cat,
+  school AS school
+FROM sailorsenshi
+LEFT JOIN cats ON cat_id = cats.id
+LEFT JOIN schools ON school_id = schools.id
+
+
+----UNION VS JOIN
+A JOIN combines result sets horizontally, a UNION appends result set vertically. 
+
+select 'US' as Location, id, name, price, card_name, card_number, transaction_date
+from ussales
+where price > 50.00
+union all
+select 'EU' as Location, id, name, price, card_name, card_number, transaction_date
+from eusales
+where price > 50.00
+
+---
+SELECT p.*, COUNT(t) AS toy_count
+FROM people p
+JOIN toys t
+  ON t.people_id = p.id
+GROUP BY p.id
+
+SELECT
+  people.*,
+  COUNT(toys) AS toy_count
+FROM people
+JOIN toys ON toys.people_id=people.id 
+GROUP BY people.id
+
+//////GROUPING/COUNTING ////
+SELECT race, COUNT(demographics) as count
+FROM demographics
+GROUP BY race
+ORDER BY count desc
+
+////having
+
+SELECT people.age, COUNT(people) as total_people 
+FROM people 
+GROUP BY age 
+HAVING COUNT(people) >= 10
+
+///convert number to string //
+SELECT 
+LENGTH(CAST(number1 as CHAR(250))) as octnum1,
+LENGTH(CAST(number2 as CHAR(250))) as octnum2,
+LENGTH(CAST(number3 as CHAR(250))) as octnum3,
+LENGTH(CAST(number4 as CHAR(250))) as octnum4,
+LENGTH(CAST(number5 as CHAR(250))) as octnum5
+FROM numbers
+
+SELECT
+  octet_length(number1::text) AS octnum1,
+  octet_length(number2::text) AS octnum2,
+  octet_length(number3::text) AS octnum3,
+  octet_length(number4::text) AS octnum4,
+  octet_length(number5::text) AS octnum5
+FROM numbers;
+
+////
+SELECT name, won, lost
+FROM fighters
+WHERE 
+  (won not like '%Hadoken' 
+  and won not like '%Shouoken'
+  and won not like '%Kikoken')
+  OR
+  (lost not like '%Hadoken' 
+  and lost not like '%Shouoken'
+  and lost not like '%Kikoken')
+GROUP BY name
+ORDER BY won desc
+
+
+SELECT name, sum(won) as won, sum(lost) as lost FROM fighters
+INNER JOIN winning_moves ON fighters.move_id=winning_moves.id
+WHERE NOT move IN ('Hadoken', 'Shouoken', 'Kikoken')
+GROUP BY name
+ORDER by won DESC
+LIMIT 6;
+
+////splitting randomstring into columns
+
+SELECT
+  REGEXP_SPLIT_TO_TABLE(text, '[aeiou]') AS results
+FROM random_string
+
+regexp_split_to_table(string text, pattern text [, flags text])
+
+Split string using a POSIX regular expression as the delimiter. See Section 9.7.3 for more information.
+hello
+world
+
+(2 rows)
+
+////
+SELECT POW(number1, number2) as result from decimals; 
+
+ORELECT
+  number1 ^ number2 AS Result
+FROM
+  decimals
+
+////pivot table
+NOT GOOD SOLUTION
+SELECT products.name, 
+sum( if( details.detail='good', qty, 0 ) ) as 'good',
+sum( if( details.detail='ok', qty, 0 ) ) as 'ok',
+sum( if( details.detail='bad', qty, 0 ) ) as 'bad'
+FROM products
+JOIN details
+ON products.id = details.product_id
+GROUP BY products.name
+
+
+SELECT p.name,
+  count(case when d.detail = 'good' then 1 end) as good,
+  count(case when d.detail = 'ok'  then 1 end) as ok, 
+  count(case when d.detail = 'bad' then 1 end) as bad
+FROM products p
+INNER JOIN details d ON p.id = d.product_id
+GROUP BY p.name
+ORDER BY p.name
+
+
+SELECT 
+  p.name,
+  SUM(CASE d.detail WHEN 'good' THEN 1 ELSE 0 END) AS good,
+  SUM(CASE d.detail WHEN 'ok' THEN 1 ELSE 0 END) AS ok,
+  SUM(CASE d.detail WHEN 'bad' THEN 1 ELSE 0 END) AS bad
+FROM products AS p
+INNER JOIN details AS d on d.product_id = p.id
+GROUP BY name
+ORDER BY name;
+
+
+SELECT people.id, people.name, COUNT(sales.sale) as sale_count
+INNER JOIN sales ON people.id=sales.people_id
+RANK() OVER (
+  ORDER BY
+  sale_count DESC
+  ) sale_rank
+FROM people
+
+SELECT p.id, p.name, sc.cnt AS sale_count, 
+       RANK() OVER( ORDER BY sc.cnt DESC ) AS sale_rank
+FROM people AS p
+JOIN (SELECT people_id, COUNT(*) AS cnt
+      FROM sales
+      GROUP BY people_id) sc
+ON sc.people_id = p.id
+
+SELECT 
+  p.*,
+  COUNT(s) as sale_count, 
+  RANK() OVER (ORDER BY sum(s.price) DESC) as sale_rank
+  FROM people p
+  JOIN sales s ON s.people_id = p.id
+  GROUP BY p.id
+
+select p.*, count(*) as sale_count, rank() over (order by count(*) desc) as sale_rank
+from people p join sales s on p.id = s.people_id
+group by p.id
