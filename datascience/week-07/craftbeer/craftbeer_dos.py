@@ -76,20 +76,25 @@ clf = neighbors.KNeighborsClassifier(10)
 clf.fit(X_train, y_train)
 
 accuracy = clf.score(X_test, y_test)
-print('ACCURACY: ', accuracy)
+# print('ACCURACY: ', accuracy)
 
 filename_hu = 'parsed.csv'
 df_hu = pd.read_csv(filename_hu)
+
 # df_hu = df_hu.drop(['abv_norm', 'bitt_norm', 'color_norm'], 1)
 
-print(df_hu.head())
+# print(df_hu.head())
 
 # HU scraped test features
 X_HU = np.array(
-    (df_hu.drop(['style_new', 'abv', 'ibu', 'srm'], 1)))
+    (df_hu.drop(['idhu', 'style_new', 'abv', 'ibu', 'srm'], 1)))
 # HU scraped test features
-y_hu = np.array(df_simplified['style_new'])
+y_hu = np.array(df_hu['style_new'])
 
+# print(X_test[0:20])
+# print(y_test[0:20])
+# print(X_HU[0:10])
+# print(y_hu[0:10])
 
 accuracy_hu = clf.score(X_HU, y_hu)
 print('ACCURACYHU: ', accuracy_hu)
@@ -110,7 +115,7 @@ for group in example_measures:
 
 
 prediction = clf.predict(example_measures)
-print('PREDICTION: ', prediction)
+# print('PREDICTION: ', prediction)
 
 
 nbrs = NearestNeighbors(n_neighbors=5, algorithm='ball_tree').fit(X)
@@ -127,5 +132,5 @@ def whoistheneighbour(i):
         print('distance: ', distances[0][i])
 
 
-whoistheneighbour(1)
-whoistheneighbour(21)
+# whoistheneighbour(1)
+# whoistheneighbour(21)
