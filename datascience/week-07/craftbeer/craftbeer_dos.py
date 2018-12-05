@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing, cross_validation, neighbors
 from sklearn.neighbors import NearestNeighbors
+from sklearn.metrics import accuracy_score
 
 seed = 1234
 
@@ -85,20 +86,13 @@ df_hu = pd.read_csv(filename_hu)
 
 # print(df_hu.head())
 
+# df_hu = df_hu.dropna(subset=['style_new'])
+
 # HU scraped test features
 X_HU = np.array(
     (df_hu.drop(['idhu', 'style_new', 'abv', 'ibu', 'srm'], 1)))
 # HU scraped test features
 y_hu = np.array(df_hu['style_new'])
-
-# print(X_test[0:20])
-# print(y_test[0:20])
-# print(X_HU[0:10])
-# print(y_hu[0:10])
-
-accuracy_hu = clf.score(X_HU, y_hu)
-print('ACCURACYHU: ', accuracy_hu)
-
 
 guiness = [0.0439, 39.4, 50.0]
 belgian_whiteale = [0.0458, 15.0, 4.02]
@@ -115,22 +109,29 @@ for group in example_measures:
 
 
 prediction = clf.predict(example_measures)
+prediction_hu = clf.predict(X_HU)
 # print('PREDICTION: ', prediction)
 
+# print(prediction_hu)
 
-nbrs = NearestNeighbors(n_neighbors=5, algorithm='ball_tree').fit(X)
-
-
-def whoistheneighbour(i):
-    coordinates = [[df_simplified.iloc[i]['abv_norm'],
-                    df_simplified.iloc[i]['ibu_norm'], df_simplified.iloc[i]['srm_norm']]]
-    distances, indices = nbrs.kneighbors(coordinates)
-    print('********origi********', df_simplified.iloc[i])
-    for i, item in enumerate(indices[0]):
-        print('********neighbour************')
-        print(df_simplified.iloc[item])
-        print('distance: ', distances[0][i])
+df_hu['pred_style'] = prediction_hu
 
 
-# whoistheneighbour(1)
-# whoistheneighbour(21)
+df_hu.to_csv('withpredHU.csv')
+
+# nbrs = NearestNeighbors(n_neighbors=5, algorithm='ball_tree').fit(X)
+
+
+# def whoistheneighbour(i):
+#     coordinates = [[df_simplified.iloc[i]['abv_norm'],
+#                     df_simplified.iloc[i]['ibu_norm'], df_simplified.iloc[i]['srm_norm']]]
+#     distances, indices = nbrs.kneighbors(coordinates)
+#     print('********origi********', df_simplified.iloc[i])
+#     for i, item in enumerate(indices[0]):
+#         print('********neighbour************')
+#         print(df_simplified.iloc[item])
+#         print('distance: ', distances[0][i])
+
+
+# # whoistheneighbour(1)
+# # whoistheneighbour(21)
