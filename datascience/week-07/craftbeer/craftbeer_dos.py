@@ -3,6 +3,8 @@ import numpy as np
 from sklearn import preprocessing, cross_validation, neighbors
 from sklearn.neighbors import NearestNeighbors
 
+seed = 1234
+
 filename = 'cleanbeer.csv'
 df = pd.read_csv(filename)
 
@@ -67,7 +69,7 @@ y = np.array(df_simplified['style_new'])
 
 
 X_train, X_test, y_train, y_test = cross_validation.train_test_split(
-    X, y, test_size=0.2)
+    X, y, test_size=0.2, random_state=seed)
 
 
 clf = neighbors.KNeighborsClassifier(10)
@@ -76,9 +78,29 @@ clf.fit(X_train, y_train)
 accuracy = clf.score(X_test, y_test)
 print('ACCURACY: ', accuracy)
 
+filename_hu = 'parsed.csv'
+df_hu = pd.read_csv(filename_hu)
+# df_hu = df_hu.drop(['abv_norm', 'bitt_norm', 'color_norm'], 1)
+
+print(df_hu.head())
+
+# HU scraped test features
+X_HU = np.array(
+    (df_hu.drop(['style_new', 'abv', 'ibu', 'srm'], 1)))
+# HU scraped test features
+y_hu = np.array(df_simplified['style_new'])
+
+
+accuracy_hu = clf.score(X_HU, y_hu)
+print('ACCURACYHU: ', accuracy_hu)
+
+
+guiness = [0.0439, 39.4, 50.0]
+belgian_whiteale = [0.0458, 15.0, 4.02]
+germanpilsner = [0.0397, 32.97, 2.69]
 
 example_measures = np.array(
-    [[0.072, 60.0, 5.0], [0.052, 30.0, 5.0], [0.042, 45.0, 65.0]])
+    [guiness, belgian_whiteale, germanpilsner])
 
 
 for group in example_measures:
