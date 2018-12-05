@@ -5,9 +5,6 @@ from sklearn.neighbors import NearestNeighbors
 
 filename = 'cleanbeer.csv'
 df = pd.read_csv(filename)
-# print(df.head())
-
-# print(len(df['style'].unique()))
 
 df = df.dropna(subset=['style_new', 'srm'])
 
@@ -40,42 +37,27 @@ srm_dict = {
     'Red Ale': 12
 }
 
-# print(df.groupby('style_new').count().sort_values(['name'], ascending=False))
-
 
 df_simplified = df[['abv', 'ibu', 'srm', 'style_new']]
-# print(df_simplified.groupby('style').count().sort_values('ibu', ascending=False))
 
-# nullcol = df_simplified.columns[df_simplified.isnull().any()]
-# nulldf = df_simplified[df_simplified.isnull().any(axis=1)][nullcol]
+df_simplified.to_csv('cleanbeer_simple.csv')
 
-print('abv_min: ', df_simplified['abv'].min())
-print('abv_max: ', df_simplified['abv'].max())
-print('ibu_min: ', df_simplified['ibu'].min())
-print('ibu_max: ', df_simplified['ibu'].max())
-print('srm_min: ', df_simplified['srm'].min())
-print('srn_max: ', df_simplified['srm'].max())
 
 X_norm = df_simplified[['abv']].values.astype(float)
 Y_norm = df_simplified[['ibu']].values.astype(float)
 Z_norm = df_simplified[['srm']].values.astype(float)
 
-min_max_scaler = preprocessing.MinMaxScaler()
+min_max_scaler_abv = preprocessing.MinMaxScaler()
+min_max_scaler_ibu = preprocessing.MinMaxScaler()
+min_max_scaler_srm = preprocessing.MinMaxScaler()
 
-df_simplified['abv_norm'] = min_max_scaler.fit_transform(X_norm)
-df_simplified['ibu_norm'] = min_max_scaler.fit_transform(Y_norm)
-df_simplified['srm_norm'] = min_max_scaler.fit_transform(Z_norm)
+min_max_scaler_abv.fit(X_norm)
+min_max_scaler_ibu.fit(Y_norm)
+min_max_scaler_srm.fit(Z_norm)
 
-print('abv_min: ', df_simplified['abv_norm'].min())
-print('abv_max: ', df_simplified['abv_norm'].max())
-print('ibu_min: ', df_simplified['ibu_norm'].min())
-print('ibu_max: ', df_simplified['ibu_norm'].max())
-print('srm_min: ', df_simplified['srm_norm'].min())
-print('srn_max: ', df_simplified['srm_norm'].max())
-
-# print(nulldf.groupby('style').count().sort_values('style'))
-
-# print(df_simplified.head(30))
+df_simplified['abv_norm'] = min_max_scaler_abv.transform(X_norm)
+df_simplified['ibu_norm'] = min_max_scaler_ibu.transform(Y_norm)
+df_simplified['srm_norm'] = min_max_scaler_srm.transform(Z_norm)
 
 
 # X aka features
@@ -88,28 +70,34 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(
     X, y, test_size=0.2)
 
 
-clf = neighbors.KNeighborsClassifier(20)
+clf = neighbors.KNeighborsClassifier(10)
 clf.fit(X_train, y_train)
 
 accuracy = clf.score(X_test, y_test)
-print(accuracy)
+print('ACCURACY: ', accuracy)
 
 
 example_measures = np.array(
     [[0.072, 60.0, 5.0], [0.052, 30.0, 5.0], [0.042, 45.0, 65.0]])
 
+
+for group in example_measures:
+    group[0] = min_max_scaler_abv.transform(group[0])
+    group[1] = min_max_scaler_ibu.transform(group[1])
+    group[2] = min_max_scaler_srm.transform(group[2])
+
+
 prediction = clf.predict(example_measures)
-print(prediction)
+print('PREDICTION: ', prediction)
+
 
 nbrs = NearestNeighbors(n_neighbors=5, algorithm='ball_tree').fit(X)
 
 
 def whoistheneighbour(i):
-    print(i)
     coordinates = [[df_simplified.iloc[i]['abv_norm'],
                     df_simplified.iloc[i]['ibu_norm'], df_simplified.iloc[i]['srm_norm']]]
     distances, indices = nbrs.kneighbors(coordinates)
-    print(indices)
     print('********origi********', df_simplified.iloc[i])
     for i, item in enumerate(indices[0]):
         print('********neighbour************')
@@ -117,11 +105,5 @@ def whoistheneighbour(i):
         print('distance: ', distances[0][i])
 
 
-whoistheneighbour(723)
-
-
-# print(indices[0:5], distances[0:5])
-# print(df_simplified[0:1])
-# print(df_simplified.iloc[0])
-# print(df_simplified.iloc[151])
-# print(df_simplified.iloc[148])
+whoistheneighbour(1)
+whoistheneighbour(21)

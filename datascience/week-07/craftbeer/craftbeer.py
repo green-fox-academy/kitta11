@@ -1,13 +1,6 @@
 import pandas as pd
 import numpy as np
-import pandas as pd
-import quandl
-import math
-import datetime
 from sklearn import preprocessing, cross_validation, neighbors
-import matplotlib.pyplot as plt
-from matplotlib import style
-import random
 
 filename = 'beers.csv'
 df = pd.read_csv(filename)
