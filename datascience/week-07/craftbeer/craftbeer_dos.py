@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import math
 from sklearn import preprocessing, cross_validation, neighbors
 from sklearn.neighbors import NearestNeighbors
 
@@ -50,13 +49,37 @@ df_simplified = df[['abv', 'ibu', 'srm', 'style_new']]
 # nullcol = df_simplified.columns[df_simplified.isnull().any()]
 # nulldf = df_simplified[df_simplified.isnull().any(axis=1)][nullcol]
 
+print('abv_min: ', df_simplified['abv'].min())
+print('abv_max: ', df_simplified['abv'].max())
+print('ibu_min: ', df_simplified['ibu'].min())
+print('ibu_max: ', df_simplified['ibu'].max())
+print('srm_min: ', df_simplified['srm'].min())
+print('srn_max: ', df_simplified['srm'].max())
+
+X_norm = df_simplified[['abv']].values.astype(float)
+Y_norm = df_simplified[['ibu']].values.astype(float)
+Z_norm = df_simplified[['srm']].values.astype(float)
+
+min_max_scaler = preprocessing.MinMaxScaler()
+
+df_simplified['abv_norm'] = min_max_scaler.fit_transform(X_norm)
+df_simplified['ibu_norm'] = min_max_scaler.fit_transform(Y_norm)
+df_simplified['srm_norm'] = min_max_scaler.fit_transform(Z_norm)
+
+print('abv_min: ', df_simplified['abv_norm'].min())
+print('abv_max: ', df_simplified['abv_norm'].max())
+print('ibu_min: ', df_simplified['ibu_norm'].min())
+print('ibu_max: ', df_simplified['ibu_norm'].max())
+print('srm_min: ', df_simplified['srm_norm'].min())
+print('srn_max: ', df_simplified['srm_norm'].max())
 
 # print(nulldf.groupby('style').count().sort_values('style'))
 
 # print(df_simplified.head(30))
 
+
 # X aka features
-X = np.array((df_simplified.drop(['style_new'], 1)))
+X = np.array((df_simplified.drop(['style_new', 'abv', 'ibu', 'srm'], 1)))
 # y for label
 y = np.array(df_simplified['style_new'])
 
@@ -78,21 +101,22 @@ example_measures = np.array(
 prediction = clf.predict(example_measures)
 print(prediction)
 
-nbrs = NearestNeighbors(n_neighbors=3, algorithm='ball_tree').fit(X)
+nbrs = NearestNeighbors(n_neighbors=5, algorithm='ball_tree').fit(X)
 
 
 def whoistheneighbour(i):
-    coordinates = [[df_simplified.iloc[i]['abv'],
-                    df_simplified.iloc[i]['ibu'], df_simplified.iloc[i]['srm']]]
+    print(i)
+    coordinates = [[df_simplified.iloc[i]['abv_norm'],
+                    df_simplified.iloc[i]['ibu_norm'], df_simplified.iloc[i]['srm_norm']]]
     distances, indices = nbrs.kneighbors(coordinates)
-    # return indices
+    print(indices)
     print('********origi********', df_simplified.iloc[i])
-    for item in indices[0]:
+    for i, item in enumerate(indices[0]):
         print('********neighbour************')
         print(df_simplified.iloc[item])
+        print('distance: ', distances[0][i])
 
 
-whoistheneighbour(162)
 whoistheneighbour(723)
 
 
